@@ -1,0 +1,136 @@
+.features {
+	// padding: 10rem 0;
+	padding: 15vw 0 0 0;
+	min-height: 140vh;
+	@extend %grid-center;
+	grid-gap: 25vw 3vw;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: flex-start;
+
+	&__left {
+		border-top-right-radius: 12em;
+		border-bottom-right-radius: 12em;
+		background: url('../assets/images/clock-and-plant-on-desk-nature-min.jpg') no-repeat;
+		background-position: right;
+		background-size: cover;
+		width: 100%;
+		height: 45vmax;
+		margin-top: 12%;
+	}
+
+	&__right {
+		will-change: height;
+		width: 100%;
+		padding: 0 5vw;
+	}
+
+	&__list {
+		// transition: all 1s $outCirc;
+		will-change: height;
+
+		li {
+			@extend %cursor;
+			border-bottom: 1.5px dashed rgba($grey-1, .5);
+			@extend %grid;
+			grid-template-columns: max-content 1fr;
+			grid-template-rows: max-content 1fr;
+			grid-gap: 0 3rem;
+			align-items: center;
+			align-content: center;
+			padding: 2.5rem 0;
+			transition: all 1s $outCirc;
+
+			&:nth-of-type(1) { border-top: 1.5px dashed rgba($grey-1, .5);}
+
+			&:hover,&:focus {
+				h3 { color: $main;}
+
+				.icon--retro {
+					background: $main;
+					color: $white;
+					span {
+						transform: rotate(45deg);
+						opacity: 1;
+					}
+				}
+				p {
+					height: 12rem;
+					min-height: 10rem;
+					// max-height: max-content; //todo
+					opacity: 1;
+					// transform: translate3d(0, 0, 0) skew(0) scaleY(1);
+					transform: translate3d(0, 0, 0) scaleY(1);
+				}
+			}
+		}
+		.icon--retro {
+			will-change: color, background;
+			grid-column: 1/2;
+			grid-row: 1/2;
+			font-size: 2.8rem;
+			@extend %font-300;
+			background: $grey;
+			color: $bluegrey;
+			transition: all 1s $outCirc;
+
+			span {
+				will-change: opacity, transform;
+				transform: rotate(0deg);
+				transform-origin: center;
+				opacity: .5;
+				transition: transform 1s $outCirc;
+			}
+		}
+
+		h3 {
+			will-change: color;
+			grid-column: 2/-1;
+			grid-row: 1/2;
+			@extend %font-500;
+			color: $bluegrey;
+			transition: color 1s $outCirc;
+		}
+		p {
+			will-change: height, opacity, transform;
+			grid-column: 2/-1;
+			grid-row: 2/-1;
+			font-weight: 400;
+			padding-right: 5rem;
+			color: $bluegrey;
+
+			height: 0;
+			opacity: 0;
+			pointer-events: none;
+			// transform: translate3d(0, -20%, 0) skew(-10deg) scaleY(0);
+			transform: translate3d(0, -20%, 0) scaleY(0);
+			transform-origin: center center;
+			transition: height .8s $outCirc, transform .8s $outCirc, opacity .2s $outCirc;
+		}
+
+		li.active { @extend li:hover; }
+	}
+
+	@include device(tab-land) { &__list { li:hover p { height: 15rem; } } }
+
+	@include device(tab) {
+		padding: 15vw 0 0vw 0;
+		max-height: auto;
+		grid-template-columns: 1fr;
+		&__right { padding: 0 10vw; min-height: 80vmax;}
+		&__list { li:hover p { height: 8vw; } } 
+	}
+
+	@include device(phone) {
+		height: auto;
+		padding: 15vw 0 30vw 0;
+		&__left {
+			background: url('../assets/images/mob-clock-and-plant-on-desk-nature-min.jpg') no-repeat right;
+			background-size: cover;
+		}
+		
+
+		&__list { li:hover p { height: 14rem; max-height: max-content; } }
+	}
+	@include device(phone-ant) { &__list { li:hover p { height: max-content; } } }
+
+}

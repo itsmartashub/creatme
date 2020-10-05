@@ -1,0 +1,59 @@
+%pos-fix { position: fixed; }
+%pos-abs { position: absolute; }
+%pos-rel { position: relative; }
+
+%height-auto { height: auto; }
+
+%object-fit { object-fit: cover; }
+
+%grid { display: grid; }
+%flex { display: flex; }
+
+%grid-center {
+	@extend %grid;
+	place-items: center;
+	justify-content: center;
+}
+%grid-jsb {
+	@extend %grid;
+	align-items: center;
+	justify-content: space-between;
+}
+
+%flex-center {
+	@extend %flex;
+	align-items: center;
+	justify-content: center;
+}
+%flex-jsb {
+	@extend %flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+%after {
+	content: '';
+	@extend %pos-abs;
+	width: 100%;
+	height: 100%;
+}
+
+%abs-center {
+	@extend %pos-abs;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+%overflow-hidden { overflow: hidden; }
+%radius-btn { border-radius: 8px; }
+%radius-icon { border-radius: 1.5rem; }
+%radius-img { border-radius: 4.5rem; }
+%radius-50 { border-radius: 50%; }
+%cursor { cursor: pointer; }
+
+%text-center { text-align: center; }
+%font-600 { font-weight: 600; }
+%font-500 { font-weight: 500; }
+%font-300 { font-weight: 300; }
+%z-minus { z-index: -1; }

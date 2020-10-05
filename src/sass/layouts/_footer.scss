@@ -1,0 +1,131 @@
+.footer {
+	// background: linear-gradient(to bottom, rgba(#edecef, 1), rgba(#edecef, .0)),
+	// 	url('../assets/images/clock-and-plant-on-desk-nature-min.jpg');
+		
+	// background: linear-gradient(to bottom, rgba(#edecef, 1), rgba(#edecef, .0)),
+	// 	url('../assets/images/clock-and-plant-on-desk-nature-min-bluredx2.jpg');
+
+	background-image: linear-gradient(to bottom, rgba(#edecef, 1), rgba(#edecef, .0)),
+		url('../assets/images/clock-and-plant-on-desk-nature-min-blured.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	padding: 10rem 10vw;
+	box-shadow: 0px -20rem 5rem 5rem rgba(#edecef, 1);
+
+	// grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
+
+	&__top {
+		@extend %grid;
+		grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+		align-items: flex-start;
+		justify-content: space-between;
+		grid-gap: 10vh 10vw;
+	}
+
+	&__nav {
+		@extend %grid;
+		// justify-content: space-around; //todo vidi ovo u mobile!!
+		grid-gap: 5vw;
+		justify-content: space-evenly;
+		grid-auto-flow: column;
+		@extend %font-500;
+
+		h5 { font-size: 1.8rem; @extend %font-600;}
+		li {
+			will-change: color;
+			color: $grey-2;
+			font-size: 1.4rem;
+			margin-bottom: .4rem;
+			transition: color .5s ease;
+
+			&:hover,&:focus {
+				a { color: $red; }
+			}
+		}
+	}
+
+	&__location {
+		// padding: 0 2vw;
+		h6 {
+			color: $grey-2;
+			@extend %font-300;
+			font-size: 3rem;
+			@extend %flex;
+
+			.location-icon {
+				border: 2px solid $red;
+				@extend %pos-rel;
+				@extend %radius-50;
+				width: 2.5rem;
+				height: 2.5rem;
+				margin-right: 2rem;
+
+				&::before {
+					content: '';
+					@extend %abs-center;
+					@extend %radius-50;
+					// top: 50%;
+					// left: 50%;
+					background: $red;
+					width: 20%;
+					height: 20%;
+				}
+				&::after {
+					content: '';
+					@extend %pos-abs;
+					left: 50%;
+					transform: translateX(-50%);
+					bottom: -80%;
+					@extend %radius-icon;
+					background: $red;
+					width: 3px;
+					height: 60%;
+				}
+			 }
+		}
+
+		p {
+			font-size: 2.5rem;
+			@extend %font-600;
+		}
+
+		input {
+			padding: 2.5rem 3rem;
+			border-radius: 2rem;
+			font-size: 1.6rem;
+		}
+
+		form { 
+			@extend %flex;
+			align-items: center;
+			width: 90%;
+		}
+
+		.icon--retro {
+			width: 5rem;
+			height: 5rem;
+			border-radius: 1.5rem;
+			margin-left: -7rem;
+		}
+	}
+
+
+	&__bottom {
+		color: $grey-2;
+		line-height: initial;
+		padding: 5rem 3rem;
+		font-size: 3rem;
+		@extend %font-300;
+
+		a {	
+			font-size: 2rem;
+			@extend %font-500;
+			color: $red;
+		}
+	}
+
+	@include device(tab) {
+		&__location { form { width: 100%; }}
+	}
+}

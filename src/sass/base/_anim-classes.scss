@@ -1,0 +1,113 @@
+.animate-all {
+	--duration: 2.5s;
+
+	.image-escalators { animation: scale 2.5s $outQuart backwards var(--duration);}
+
+	.nav { animation: fadein_fromTop 1s $outBack backwards calc(var(--duration) + .8s); }
+	.header {
+		&__top {
+			h1 { animation: fadein_fromBottom 1s $outBack backwards calc(var(--duration) + .8s); }
+			p { animation: fadein_fromBottom 1s $outBack backwards calc(var(--duration) + 1s); }
+		}
+		&__model-wrapper {  animation: header_model 2.3s $outBack backwards calc(var(--duration) + .8s); }
+
+		&__scrolldown { animation: header_scrolldown 1s $outBack backwards calc(var(--duration) + 1.5s); }
+	}
+	.createcv {
+		animation: fadein_fromBottom 1s $outBack backwards calc(var(--duration) + 1s);
+
+		&__img-wrapper {
+			animation: scale 1.5s $outBack backwards;
+
+			&::after { animation: createcv_after 2s $inOutCirc backwards; }
+
+			&:nth-of-type(1) {
+				animation-delay: calc(var(--duration) + 1s);
+				&::after { animation-delay: calc(var(--duration) + 1.5s); }
+			}
+			&:nth-of-type(2) {
+				animation-delay: calc(var(--duration) + 1.2s);
+				&::after { animation-delay: calc(var(--duration) + 1.8s); }
+			}
+			&:nth-of-type(3) {
+				animation-delay: calc(var(--duration) + 1.3s);
+				&::after { animation-delay: calc(var(--duration) + 1.6s); }
+			}
+			&:nth-of-type(4) {
+				animation-delay: calc(var(--duration) + 1.5s);
+				&::after { animation-delay: calc(var(--duration) + 1.9s); }
+			}
+		}
+		.btn { animation: fadein_fromTop 1.5s $outBack backwards calc(var(--duration) + 1.5s); }
+	}
+}
+
+
+@keyframes fadein_fromTop {
+	from {
+		transform: translate3d(0, -20%, 0);
+		opacity: 0;
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+@keyframes fadein_fromBottom {
+	from {
+		transform: translate3d(0, 20%, 0);
+		opacity: 0;
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+
+@keyframes scale {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+@keyframes scaleX {
+	from {
+		transform: scaleX(0);
+		opacity: 0;
+	}
+	to {
+		transform: scaleX(1);
+		opacity: 1;
+	}
+}
+@keyframes createcv_after {
+	0%, 100% {transform: scale(0) translateY(300%);}
+	40%, 80% {transform: scale(1) translateY(0);}
+}
+
+@keyframes header_model {
+	from { 
+		transform: rotateY(180deg) scale(.3) translate3d(-50%,-50%, 0);
+		opacity: 0;
+	}
+	to {
+		transform: rotateY(0deg) scale(1) translate3d(0,0,0);
+		opacity: 1;
+	}
+}
+
+@keyframes header_scrolldown {
+	from {
+		transform: rotate(90deg) scaleY(0) translate3d(-5rem, 0, 0);
+		opacity: 0;
+		transform-origin: center top;
+	}
+	to {
+		transform: rotate(90deg) scaleY(1) translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}

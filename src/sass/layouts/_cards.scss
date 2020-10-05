@@ -1,0 +1,96 @@
+.cards {
+	background: $section-2-gradient;
+	border-top-right-radius: 15rem;
+	// display: grid;
+	// grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+	// grid-gap: 1rem 4rem;
+
+	@extend %flex-center;
+	flex-wrap: wrap;
+}
+
+
+.card {
+	padding: 4rem;
+	@extend %radius-icon;
+	@extend %cursor;
+	@extend %pos-rel;
+
+	width: 30rem;
+	margin: 1rem;
+	z-index: 2;
+
+	& > * { margin-bottom: 1rem; }
+
+	&::after {
+		will-change: clip-path, box-shadow;
+		@extend %radius-icon;
+		@extend %after;
+		top: 0;
+		left: 0;
+		clip-path: circle(0% at 0% 100%);
+		z-index: -1;
+		background: white;
+		transition: all 1s ease-in-out;
+	}
+
+	&:nth-of-type(2) { &::after { clip-path: circle(0% at 100% 0%); } }
+	&:nth-of-type(3) { &::after { clip-path: circle(0% at 0% 0%); } }
+	&:nth-of-type(4) { &::after { clip-path: circle(0% at 0% 100%); } }
+
+	&:hover, &:focus {
+		&::after { 
+			box-shadow: -.5rem .8rem 2.5rem .4rem rgba($main, .1);
+			clip-path: circle(150% at 100% 0%);
+		}
+		.card__arrow {
+			opacity: 1;
+			transform: translateX(0%) scaleX(1);
+		}
+	}
+
+	&__graph {
+		@extend %flex-jsb;
+		margin-bottom: 2rem;
+
+		svg:nth-of-type(1) {
+			height: 1.4rem;
+			width: auto;
+		}
+	}
+	&__arrow {
+		will-change: opacity, transform;
+		opacity: 0;
+		transform: translateX(-50%) scaleX(0);
+		transition: opacity .6s ease .3s, transform .3s ease .4s;
+		transform-origin: left center;
+	}
+
+	h3 { @extend %font-500; display: block;}
+	p {
+		font-size: 1.5rem;
+		@extend %font-300;
+		color: $grey-2;
+	}
+	
+	&:nth-of-type(1) {
+		.icon--retro { background: $icon-yellow-gradient; box-shadow: var(--box-shadow-vals) rgba(#ffde93, $rgba-alpha) ;}
+	}
+
+	&:nth-of-type(2) {
+		.icon--retro { background: $icon-red-gradient; box-shadow: var(--box-shadow-vals) rgba(#e85352, $rgba-alpha); }
+	}
+	&:nth-of-type(3) {
+		.icon--retro { background: $icon-blue-gradient; box-shadow: var(--box-shadow-vals) rgba(#7abaec, $rgba-alpha); }
+	}
+	&:nth-of-type(4) {
+		.icon--retro { background: $icon-purple-gradient; box-shadow: var(--box-shadow-vals) rgba(#8d5fe4, $rgba-alpha); }
+	}
+
+
+	@include device(phone-ant) {
+		padding: 2rem 2.5rem;
+		width: 100%;
+		margin: 2rem 0;
+	}
+}

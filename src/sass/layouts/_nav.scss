@@ -1,0 +1,235 @@
+.nav {
+	will-change: transform, opacity;
+	@extend %flex-jsb;
+	flex-wrap: wrap;
+	padding: 3vw var(--padding-lr);
+
+	&__logo {
+		--svg-gradient-1: #f18774;
+		--svg-gradient-2: #f16e6b;
+		@extend %pos-rel;
+
+		&::before {
+			@extend %after;
+			background: rgba($main, .15);
+			width: 120%;
+			height: 120%;
+			top: -10%;
+			left: -10%;
+			z-index: 1;
+			// transform: scaleX(0);
+			// transform-origin: left center;
+			// transition: .8s transform $inOutCirc;
+			transition: .8s clip-path $inOutCirc;
+			border-radius: 1rem;
+			clip-path: circle(0% at 0% 100%);
+		}
+
+		&:hover, &:focus {
+			&::before {
+				// transform: scaleX(1);
+				clip-path: circle(100% at 0% 100%);
+			}
+		}
+
+		svg {
+			cursor: pointer;
+			width: 20vw;
+			@extend %height-auto;
+			z-index: 2;
+			position: relative;
+			transition: .5s ease all;
+
+			stop { transition: .5s ease all; }
+		}
+	}
+
+	&__input, &__burger { display: none; }
+
+	&__list {
+		@extend %flex-jsb;
+
+		li {
+			margin: 1.5rem;
+
+			&:nth-of-type(1),
+			&:nth-of-type(2) {
+				margin-right: 2rem;
+				background-image: linear-gradient(90deg, darken($main, 15%) 50%, transparent 50%, transparent 0%, );
+				background-size: 200%;
+				-webkit-background-clip: text;
+				background-clip: text;
+				background-position: 100%;
+				transition: background-position .5s $inQuad, color .5s $inQuad;
+
+				&:hover,&:focus {
+					background-position: 0%;
+					background-size: 200%;
+					color: transparent;
+				}
+
+				span {
+					transform: rotate(90deg);
+					display: inline-block;
+					margin: 0 .5rem;
+					font-size: 1.4rem;
+					font-weight: 700;
+				}
+			}
+		}
+	}
+
+	.btn,
+	.btn--outline {
+		width: 11rem;
+		height: 5rem;
+		line-height: 5rem;
+		padding: 0;
+		@extend %text-center;
+	}
+	.btn {
+		background: $btn-gradient-2;
+		&::after { background: $icon-red-gradient; }
+	}
+	.btn--outline { margin: 0 0 0 2.2rem;}
+
+
+	@include device(tab) {
+		padding: 5rem var(--padding-lr);
+		justify-content: center;
+
+		&__logo {
+			margin-right: 5rem;
+			margin-bottom: 2rem;
+
+			svg { width: 25vw; }
+		}
+	}
+
+	@include device(phone-land) {
+		--burger-width: 4rem;
+		--burger-height: 3rem;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+
+		&__logo { 
+			margin: 0;
+			svg { width: 35vw;}
+		}
+		
+		&__list {
+			will-change: clip-path;
+			background: $section-5-gradient;
+			flex-direction: column;
+			position: absolute;
+			top: 0; 
+			left: 0;
+			z-index: 2;
+			width: 100%;
+			padding: 30vw var(--padding-lr) 20vw var(--padding-lr);
+			// transform: translateY(-100%);
+			// transform-origin: center top;
+			font-size: 2rem;
+
+			clip-path: circle(0% at 89% 8%);
+			visibility: hidden;
+			transition: .6s $inOutCubic;
+			box-shadow: 10px 0px 20px rgba($grey-2, .5);
+
+			.btn,
+			.btn--outline {
+				width: 60vw;
+				height: 7rem;
+				line-height: 7rem;
+				margin: 0;
+				padding: 0;
+				font-size: 2rem;
+			}
+			.btn--outline { margin: 5rem 0 2rem 0; }
+		}
+
+		&__input:checked {
+			& ~ .nav__list {
+				// transform: translateY(0%);
+				clip-path: circle(100% at 50% 50%);
+				visibility: visible;
+				display: flex;
+			}
+
+			& + .nav__burger {
+				.nav__burger-line {
+					background: transparent;
+					&::before { transform-origin: center; transform: rotate(45deg); top: 50%; }
+					&::after { transform-origin: center; transform: rotate(-45deg); top: 50%; bottom: 50%; }
+				}
+			}
+		}
+
+		&__burger {
+			display: block;
+			position: relative;
+			z-index: 5;
+			width: var(--burger-width);
+			height: var(--burger-height);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			// padding: 1rem 0;
+
+			&-line {
+				will-change: width;
+				width: 35%;
+				height: 4px;
+				border-radius: 2rem;
+				background: $btn-gradient-2;
+				transition: .4s $inOutCirc width;
+
+				&::after,
+				&::before {
+					will-change: transform, background;
+					content: '';
+					position: absolute;
+					width: var(--burger-width);
+					// width: calc(var(--burger-width) - 20%);
+					transform: scaleX(.8);
+					height: 3.4px;
+					border-radius: 5rem;
+					background: $brown;
+					transition: .4s $inOutCirc transform;
+				}
+
+				&::before {
+					top: 0;
+					left: 0;
+					transform-origin: left;
+				}
+				&::after {
+					bottom: 0;
+					right: 0;
+					transform-origin: right;
+				}
+			}
+
+
+			&:hover,&:focus {
+				.nav__burger-line {
+					width: 100%;
+					&::before,
+					&::after {
+						transform: scaleX(1.1);
+						background: $btn-gradient-2;
+					}
+				}
+			}
+			
+
+		}
+		
+		&__logo { z-index: 5;}
+	}
+
+	// &--anim {
+	// 	animation: fadein_fromTop 1s $outBack backwards;
+	// }
+}

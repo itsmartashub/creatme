@@ -1,0 +1,105 @@
+//  @mixin breakpoint($point) {
+// 	@if $point == largedesktop {
+// 		@media (max-width: 1920px) and (min-width: 1441px) { @content ; }
+// 	}
+// 	@if $point == desktop {
+// 		@media (max-width: 1440px) and (min-width: 1025px) { @content ; }
+// 	}
+// 	@else if $point == tablet {
+// 		@media (max-width: 1024px) and (min-width: 768px) { @content ; }
+// 	}
+// 	@else if $point == mobilerotate {
+// 		@media (max-width: 767px) and (min-width: 481px) { @content ; }
+// 	}
+// 	@else if $point == mobile {
+// 		@media (max-width: 480px) and (min-width: 320px) { @content ; }
+// 	}
+// }
+
+
+// Defining values
+// $small-range:   (0em, 40em);       /* 0, 640px */
+// $medium-range:  (40.063em, 64em);  /* 641px, 1024px */
+// $large-range:   (64.063em, 90em);  /* 1025px, 1440px */
+// $xlarge-range:  (90.063em, 120em); /* 1441px, 1920px */
+// $xxlarge-range: (120.063em);       /* 1921px */
+
+// $bp-largest: 75em;      // 1200px / 16
+// $bp-large: 68.75em;     // 1000px / 16
+// $bp-medium: 56.25em;    // 900px / 16
+// $bp-small: 37.5em;      // 600px / 16
+// $bp-smallest: 31.25em;      // 500px / 16
+
+// $xxs: 20em; // phone-ant 320
+// $xs: 31.25em; // phone 500
+// $s: 37.5em; // phone-land 600
+// $m: 56.25em; // tab 900
+// $l: 75em; // tab-land 1200
+// $xl: 120em; // big 1920
+// $xxl: 120.063em; // huge 1921+
+
+@mixin device($breakpoint) {
+    // @if $breakpoint == phone {
+    //    @media only screen and (max-width: 37.5em) { @content };      // 600px/16
+    //    @media only screen and (max-width: 37.5em) { @content };      // 600px/16
+    // }
+
+    // @if $breakpoint == tab-port {
+    //     @media only screen and (max-width: 56.25em) { @content };     // 900px/16
+    //     @media only screen and (max-width: 56.25em) { @content };     // 900px/16
+    // }
+
+    // @if $breakpoint == tab-land {
+    //    @media only screen and (max-width: 75em) { @content };     // 1200px/16
+    //    @media only screen and (max-width: 75em) { @content };     // 1200px/16
+    // }
+
+    // @if $breakpoint == big-desktop {
+    //     @media only screen and (min-width: 112.5em) { @content }; // 1800/16
+    //     @media only screen and (min-width: 112.5em) { @content }; // 1800/16
+    // }
+
+	@if $breakpoint == phone-ant {
+		@media only screen and (max-width: 20em) { @content };  // 320/16
+	}
+	@if $breakpoint == phone {
+		@media only screen and (max-width: 31.25em) { @content };  // 500/16
+	}
+	@if $breakpoint == phone-land {
+		@media only screen and (max-width: 37.5em) { @content };  // 600/16
+	}
+	@if $breakpoint == tab {
+		@media only screen and (max-width: 56.25em) { @content };  // 900/16
+	}
+	@if $breakpoint == tab-land {
+		@media only screen and (max-width: 75em) { @content };  // 1200/16
+	}
+	@if $breakpoint == big {
+		@media only screen and (min-width: 120em) { @content };  // 1920/16
+	}
+}
+
+
+
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+	// For Google Chrome
+	&::-webkit-scrollbar {
+		width:  $size;
+		height: $size;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $foreground-color;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $background-color;
+	}
+
+	// For Internet Explorer
+	body {
+		scrollbar-face-color: $foreground-color;
+		scrollbar-track-color: $background-color;
+	}
+}

@@ -1,0 +1,48 @@
+$p-l: 24vw;
+
+.container {
+	--padding-l: 24vw;
+	@extend %pos-rel;
+
+	.image-plant {
+		@extend %pos-abs;
+		top: 0;
+		left: 0;
+		border-top-right-radius: 20rem;
+		border-bottom-right-radius: 20rem;
+		width: 20vw;
+		height: 100%;
+
+		background: url('../assets/images/plant-half.jpg');
+		background-size: cover;
+		// background-position: 50% center;
+	}
+
+	.section--1 {
+		padding: 10rem var(--padding-lr) 5rem var(--padding-l);
+		margin-left: 6rem;
+		font-size: 2rem;
+		// @extend %grid-center;
+
+		.icon { justify-self:left; }
+			
+		p { margin-top: 3rem; text-transform: capitalize; }
+
+		span:nth-of-type(1) { @extend %font-500;}
+		span:nth-of-type(2) { color: #57b9fa; text-transform: lowercase;}
+	}
+
+	.section--2 { padding: 10rem var(--padding-lr) 5rem var(--padding-l); }
+
+
+	@include device(tab) {.image-plant { background-position-x: 25%; }}
+
+	@include device(phone-ant) {
+		.image-plant { display: none;}
+
+		.section--1, .section--2 {
+			padding: 5rem var(--padding-lr);
+			margin: 0 auto;
+		}
+	}
+}

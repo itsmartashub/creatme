@@ -1,0 +1,24 @@
+{
+	"name": "creatme",
+	"version": "1.0.0",
+	"description": "Creatme landing page",
+	"main": "src/index.html",
+	"scripts": {
+		"dev": "parcel src/index.html --no-cache",
+		"build:parcel": "parcel build src/index.html --no-source-maps --no-cache",
+		"build": "npm run clean && npm run build:parcel",
+		"clean": "rm -rf dist/*"
+	},
+	"keywords": [],
+	"author": "Marta Bires",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^9.8.6",
+		"node-sass": "^4.14.1",
+		"parcel-bundler": "^1.12.4"
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions"
+	]
+}

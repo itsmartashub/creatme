@@ -1,0 +1,25 @@
+:root { --icon-size: 4.5rem; }
+
+%icon {
+	width: var(--icon-size);
+	height: var(--icon-size);
+	@extend %radius-icon;
+	@extend %flex-center;
+}
+
+.icon {
+	@extend %icon;
+	background: $icon-bg-gradient;
+	
+	&--retro {
+		// --icon-size: 4rem;
+		@extend %icon;
+		background: $main;
+		svg { fill: $white; }
+	}
+}
+
+svg {
+	height: 2rem;
+	width: auto;
+}

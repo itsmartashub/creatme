@@ -1,0 +1,141 @@
+.ready {
+	margin: 0 3vw;
+	padding: 12rem 8vw;
+	background: $section-5-gradient;
+	border-top-left-radius: 10rem;
+	border-top-right-radius: 10rem;
+	@extend %text-center;
+
+	&__boxes {
+		@extend %flex-center;
+		flex-wrap: wrap;
+		border-radius: 3rem;
+		background: $white;
+		box-shadow: 0 1rem 6rem 0px rgba($rose, .1);
+		padding: 2rem 0rem;
+		margin-bottom: 10rem;
+		text-align: initial;
+	}
+
+	&__box {
+		padding: 2.8rem 4rem; margin: 1rem;
+		@extend %flex-center; flex-wrap: wrap;
+		@extend %cursor;
+		@extend %pos-rel; z-index: 2;
+
+		&:hover,&:focus {
+			// &::after { transform: scaleX(1); }
+			&::after { transform: scale(1); }
+		}
+
+		&::after {
+			will-change: transform;
+			@extend %after;
+			z-index: -1;
+			background: darken(#fff5f5, 1%);
+			border-radius: 2rem;
+			transform: scale(0);
+			// transform: scaleX(0);
+			transition: .5s $outQuart transform;
+		}
+
+		&:nth-of-type(1)::after { transform-origin: right top; }
+		&:nth-of-type(2)::after { transform-origin: left bottom; }
+		&:nth-of-type(3)::after { transform-origin: left top; }
+
+		&-circle {
+			@extend %radius-50;
+			width: 2rem;
+			height: 2rem;
+			margin: 1.5rem;
+		}
+
+		&:nth-of-type(1) &-circle { background: $icon-yellow-gradient; }
+		&:nth-of-type(2) &-circle { border: 3px solid $main; }
+		&:nth-of-type(3) &-circle { background: $icon-purple-gradient; }
+
+		h4 {@extend %font-500; }
+		p {
+			font-size: 1.3rem;
+			color: $main;
+		}
+	}
+
+	&__link-circles {
+		@extend %flex-center;
+		--circle-size: 5px;
+	}
+
+	&__link-circle {
+		will-change: transform, background;
+		@extend %flex-center;
+		@extend %radius-50;
+		margin: 1rem;
+		width: var(--circle-size);
+		height: var(--circle-size);
+		background: $grey-2;
+		transition: all .5s $outCirc;
+
+		&:hover,&:focus {
+			@extend li.active;
+			// @extend li, .active;
+		}
+
+		a {
+			width: 100%;
+			height: 100%;
+			padding: 1rem;
+			@extend %cursor;
+		}
+	}
+	li.active {
+		transform: scale(1.8);
+		background: $red;
+	}
+
+	&__slide { p  { padding: 0 5vw;} }
+
+	&__buttons {
+		@extend %flex-center;
+		flex-wrap: wrap;
+
+		button  {
+			width: 25rem;
+			height: 6rem;
+			margin: 1rem;
+			font-size: 1.55rem;
+			@extend %font-500;
+
+			&:nth-of-type(1) {
+				@extend %flex-center;
+				svg {
+					margin-right: 1.4rem;
+					width: 3rem;
+					@extend %height-auto;
+				}
+			}
+		}
+	}
+
+	@include device(tab) { &__box { width: 90%; } }
+
+	@include device(phone-land) { 
+		&__buttons {
+			button  {
+				width: 90%;
+				height: 8rem;
+				margin: 1.5rem;
+				font-size: 1.6rem;
+
+				&:nth-of-type(1) {
+					svg {
+						margin-right: 2rem;
+						width: 3.5rem;
+					}
+				}
+			}
+		}
+	}
+
+	@include device(phone-ant) { &__box { padding: 2.8rem 2px; } }
+}

@@ -1,0 +1,78 @@
+%btn {
+	@extend %cursor;
+	padding: 1.8rem 3.2rem;
+	font-size: 1.4rem; font-family: $font-family;
+	display: inline-block;
+	border: none;
+
+	&:focus { outline: none; }
+}
+
+.btn {
+	@extend %btn;
+	@extend %radius-btn;
+	background: $btn-gradient-3;
+	color: $white;
+	@extend %pos-rel;
+	@extend %overflow-hidden;
+	z-index: 1;
+
+	&::after {
+		will-change: background, clip-path;
+		@extend %after;
+		top: 0;
+		left: 0;
+		clip-path: circle(0% at 0% 100%);
+		z-index: -1;
+		background: $btn-gradient-2;
+		transition: all .6s $inOutCirc;
+	}
+
+	&:hover, &:focus { &::after { clip-path: circle(150% at 0% 100%); } }
+
+	&--outline {
+		@extend %btn;
+		@extend %radius-btn;
+		background: transparent;
+		color: black;
+		border: .11rem solid rgba($main, .8);
+		padding: 1.1rem 3.1rem;
+		@extend %pos-rel;
+		@extend %overflow-hidden;
+		z-index: 1;
+		transition: color .5s $inOutCirc;
+		
+
+		&::after {
+			@extend .btn::after;
+			// @extend .btn, ::after;
+		}
+
+		&:hover,&:focus {
+			color: $white;
+			@extend .btn:hover::after;
+			// @extend .btn, :hover, ::after;
+		}
+	}
+
+	&--link {
+		@extend %pos-rel;
+		@extend %font-600;
+		z-index: 2;
+		font-size: 1.8rem;
+
+		&::after {
+			will-change: transform, opacity;
+			@extend %after;
+			bottom: -50%;
+			left: 0;
+			background: $btn-gradient-2;
+			transform-origin: bottom center;
+			transform: scaleY(.08);
+			z-index: -1;
+			transition: all .4s ease;
+		}
+
+		&:hover { &::after { transform: scaleY(1); opacity: .6;} }
+	}
+}
