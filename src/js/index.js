@@ -17,13 +17,28 @@
 // }
 
 // smoothScroll();
+import {
+	ANIM_OBSERVER
+} from './Observer';
 
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
 	displayContent()
 	hideAfterloader()
 	hidePreloader()
 	addAnimationClass()
 	setTimeout(removePreloaderAnimation, 3000)
+
+	// const _observe = new Observer();
+	// if (!!window.IntersectionObserver) {
+	// 	_observe.anim_observer();
+	// } else {
+	// 	//todo dodati style za sve elemente da su vidljivi i bez transforma
+	// 	// _observe.browserDontSupportObserver();
+	// 	console.log('NE PODRZAVA OBSERVER');
+	// }
+
+	ANIM_OBSERVER();
+
 })
 
 const displayContent = () => document.querySelector('.content').style.display = 'block'
@@ -34,14 +49,14 @@ const hideAfterloader = () => document.querySelector('.afterloader').classList.a
 
 const addAnimationClass = () => {
 	const body = document.body || document.documentElement.body
-	if(body.classList.contains('animate-all ')) return
+	if (body.classList.contains('animate-all ')) return
 	body.classList.add('animate-all')
 }
 
 const removePreloaderAnimation = () => {
 	document.querySelector('.preloader__circle').style.animation = 'none';
-	document.styleSheets[0].addRule('.preloader__circle::before','animation: none');
-	document.styleSheets[0].addRule('.preloader__circle::after','animation: none');
+	document.styleSheets[0].addRule('.preloader__circle::before', 'animation: none');
+	document.styleSheets[0].addRule('.preloader__circle::after', 'animation: none');
 
 	pseudoElementsCss()
 }

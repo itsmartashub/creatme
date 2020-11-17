@@ -11,7 +11,9 @@
 		min-width: 70%;
 		max-width: 40vw;
 
-		p { padding-right: 5rem; }
+		p {
+			padding-right: 5rem;
+		}
 	}
 
 	&__right {
@@ -21,6 +23,12 @@
 
 	&__img-wrapper-1 {
 		--img-circle-size: 35vw;
+		// clip-path: circle(50% at 50% 50%);
+		// transition: all .5s $outCirc !important;
+
+		// &:hover {
+		// 	clip-path: circle(0% at 50% 50%);
+		// }
 
 		source,
 		img {
@@ -45,6 +53,7 @@
 			@extend %object-fit;
 			width: 100%;
 			height: 100%;
+			transition-delay: .5s;
 		}
 	}
 
@@ -52,7 +61,7 @@
 		@extend %pos-abs;
 		top: 68%;
 		left: 0%;
-		transform: translate(10%, -50%);
+		transform: translate3d(10%, -50%, 0);
 		width: 16vw;
 		// padding: 1.8rem 2rem;
 		padding: 2.3rem .5vw;
@@ -63,9 +72,11 @@
 		justify-content: space-evenly;
 		border-radius: 2rem;
 		box-shadow: -1px 10px 20px 5px rgba($grey-1, .18);
-		transition: all .4s ease;
+		// transition: all .4s ease;
 		@extend %overflow-hidden;
+		transition-delay: .6s;
 	}
+
 	&__icon {
 		@extend %cursor;
 		line-height: 0;
@@ -78,7 +89,10 @@
 			stroke-width: .1rem;
 			transition: all .4s ease-in-out;
 		}
-		&:nth-of-type(3) svg { stroke-width: .2rem; }
+
+		&:nth-of-type(3) svg {
+			stroke-width: .2rem;
+		}
 
 		span {
 			will-change: line-height, transform, color;
@@ -90,20 +104,34 @@
 			animation: none;
 		}
 
-		&:hover,&:focus {
-			svg { fill: $main; stroke: $main; }
+		&:hover,
+		&:focus {
+			svg {
+				fill: $main;
+				stroke: $main;
+			}
 
 			span {
 				color: $main;
 				animation: hoverDots .8s $inOutQuad;
-				&:nth-of-type(2) { animation-delay: .1s; }
-				&:nth-of-type(3) { animation-delay: .2s; }
+
+				&:nth-of-type(2) {
+					animation-delay: .1s;
+				}
+
+				&:nth-of-type(3) {
+					animation-delay: .2s;
+				}
 			}
 		}
 	}
 
 
-	@include device(tab-land) { &__icons { width: 20vw; } }
+	@include device(tab-land) {
+		&__icons {
+			width: 20vw;
+		}
+	}
 
 	@include device(tab) {
 		min-height: max-content;
@@ -112,46 +140,92 @@
 		grid-template-rows: repeat(2, auto);
 		padding-top: 12vw;
 
-		&__left { grid-row: 2/3; grid-column: 1/-1; p { padding-right: 0; }}
-		&__right { grid-row: 1/2; grid-column: 1/-1;}
+		&__left {
+			grid-row: 2/3;
+			grid-column: 1/-1;
 
-		&__icons { width: 24vw; }
+			p {
+				padding-right: 0;
+			}
+		}
+
+		&__right {
+			grid-row: 1/2;
+			grid-column: 1/-1;
+		}
+
+		&__icons {
+			width: 24vw;
+		}
 	}
 
 	@include device(phone-land) {
 		padding-top: 25vw;
-		
+
 		&__left {
 			min-width: auto;
 			max-width: 100%;
 		}
-		&__icons { 
+
+		&__icons {
 			top: 78%;
 			width: 80%;
 		}
-		&__icon { svg { height: 2.65rem;}}
 
-		&__img-wrapper-1 { --img-circle-size: 55vw; }
-		&__img-wrapper-2 { width: 30vw; }
+		&__icon {
+			svg {
+				height: 2.65rem;
+			}
+		}
+
+		&__img-wrapper-1 {
+			--img-circle-size: 55vw;
+		}
+
+		&__img-wrapper-2 {
+			width: 30vw;
+		}
 	}
 
 	@include device(phone) {
 		margin-bottom: 8vh;
-		grid-gap: 15vw; 
+		grid-gap: 15vw;
 
-		&__icons { width: 110%; transform: translate(0%, -50%);}
+		&__icons {
+			width: 110%;
+			transform: translate3d(0%, -50%, 0);
+		}
 	}
 
 	@include device(phone-ant) {
-		&__icons { width: 120%; padding: 1.8rem; }
-		&__icon { svg { height: 2.1rem;}}
-		&__icon:not(:last-child) { margin-right: 1rem; }
+		&__icons {
+			width: 120%;
+			padding: 1.8rem;
+		}
+
+		&__icon {
+			svg {
+				height: 2.1rem;
+			}
+		}
+
+		&__icon:not(:last-child) {
+			margin-right: 1rem;
+		}
 	}
 }
 
 
 @keyframes hoverDots {
-	0% { transform: translateY(0%); }
-	50% { transform: translateY(-15%); }
-	100% { transform: translateY(0%); }
+	0% {
+		transform: translateY(0%);
+	}
+
+	50% {
+		transform: translateY(-15%);
+	}
+
+	100% {
+		transform: translateY(0%);
+	}
 }

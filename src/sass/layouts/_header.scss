@@ -1,7 +1,5 @@
 .header {
-	// padding: 15rem 10vw 5rem 10vw;
 	padding: 10rem var(--padding-lr) 5rem var(--padding-lr);
-	perspective: 150rem;
 
 	&__top {
 		h1 {
@@ -9,7 +7,6 @@
 			font-size: 5rem;
 			color: black;
 			line-height: initial;
-			mix-blend-mode: difference;
 		}
 
 		p {
@@ -27,13 +24,19 @@
 		grid-gap: 12vw 10vw;
 		grid-template-columns: 1fr auto;
 		grid-template-rows: max-content 1fr;
-		grid-template-areas: 
+		grid-template-areas:
 			"createcv model"
 			"scrolldown model"
 		;
 	}
 
-	&__createcv { grid-area: createcv; }
+	&__createcv {
+		grid-area: createcv;
+	}
+
+	&__scrolldown-wrapper-anchor {
+		@extend %flex-center;
+	}
 
 	&__scrolldown {
 		will-change: transform, opacity;
@@ -42,31 +45,46 @@
 		justify-self: center;
 		margin-top: 8rem;
 		background: $main;
-		width: 13rem;
-		height: 2px;
-		transform: rotate(90deg) scaleY(1) translate3d(0, 0, 0);
+		width: 2px;
+		height: 13rem;
 		font-size: 1.3rem;
 		@extend %pos-rel;
 
 		&::before {
 			content: 'scroll to explore';
-			@extend %pos-abs;
-			top: 500%;
-			left: -50%;
-			width: 100%;
 			color: $grey-1;
+			@extend %pos-abs;
+			top: 0%;
+			left: 0;
+			width: max-content;
+			transform: rotate(90deg) translate(-50%, 80%);
+			transform-origin: left center;
+			transition: transform .5s ease-in-out;
 		}
+
 		&::after {
 			@extend %pos-abs;
-			top: 150%;
-			right: 0%;
+			bottom: 0;
+			left: -2px;
 			content: '';
 			width: 7px;
 			height: 7px;
-			border-top: 2px solid $main;
+			border-bottom: 2px solid $main;
 			border-right: 2px solid $main;
 			transform-origin: center center;
-			transform: rotate(45deg) translate(-50%, -50%);
+			transform: rotate(45deg);
+			transition: transform .5s ease-in-out;
+		}
+
+		&:hover,
+		&:focus {
+			transform: translate(0, 30%);
+			transform-origin: top;
+			transition: transform .5s ease-in-out;
+
+			&::before {
+				transform: translate(10%, -10%);
+			}
 		}
 	}
 
@@ -80,8 +98,9 @@
 		transition: 1s $outSmooth;
 		transform-style: preserve-3d;
 
-		&:hover,&:focus {
-			transform: rotateY(180deg) scale(1) translate3d(0,0,0);
+		&:hover,
+		&:focus {
+			transform: rotateY(180deg) scale(1) translate3d(0, 0, 0);
 
 			.header__model-img {
 				transform: scale(1.8);
@@ -89,6 +108,7 @@
 			}
 		}
 	}
+
 	&__model-img {
 		will-change: transform, filter;
 		background: url("../assets/images/yellow-jacket-model.jpg") no-repeat center;
@@ -104,6 +124,7 @@
 			display: grid;
 			justify-content: center;
 		}
+
 		&__bottom {
 			grid-template-columns: repeat(4, auto);
 			grid-template-areas:
@@ -112,35 +133,49 @@
 			justify-content: center;
 		}
 
-		&__scrolldown { align-self: flex-end; }
+		&__scrolldown {
+			align-self: flex-end;
+		}
 	}
 
 
 	@include device(phone-land) {
-		perspective: none;
-		h1 { font-size: 4rem; }
+		h1 {
+			font-size: 4rem;
+		}
+
 		p {
 			backdrop-filter: none;
-			z-index: -1;
 		}
+
 		&__model-wrapper {
 			width: 40vw;
 			height: 50vw;
-			// background: url("../assets/images/mob-yellow-jacket-model.jpg") no-repeat center;
-			// background-size: cover;
 		}
 	}
 
-	@include device(phone-ant) { h1 { font-size: 3.1rem; } }
+	@include device(phone-ant) {
+		h1 {
+			font-size: 3.1rem;
+		}
+	}
 }
 
 
-@keyframes rotating {
-	0% { transform: rotateY(0deg); }
-	35% { transform: rotateY(200deg); }
-	70% { transform: rotateY(160deg); }
-	100% { transform: rotateY(180deg); }
-}
+// @keyframes rotating {
+// 	0% {
+// 		transform: rotateY(0deg);
+// 	}
 
+// 	35% {
+// 		transform: rotateY(200deg);
+// 	}
 
+// 	70% {
+// 		transform: rotateY(160deg);
+// 	}
 
+// 	100% {
+// 		transform: rotateY(180deg);
+// 	}
+// }

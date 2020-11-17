@@ -20,9 +20,12 @@
 	margin: 1rem;
 	z-index: 2;
 
-	& > * { margin-bottom: 1rem; }
+	&>* {
+		margin-bottom: 1rem;
+	}
 
 	&::after {
+
 		will-change: clip-path, box-shadow;
 		@extend %radius-icon;
 		@extend %after;
@@ -34,15 +37,37 @@
 		transition: all 1s ease-in-out;
 	}
 
-	&:nth-of-type(2) { &::after { clip-path: circle(0% at 100% 0%); } }
-	&:nth-of-type(3) { &::after { clip-path: circle(0% at 0% 0%); } }
-	&:nth-of-type(4) { &::after { clip-path: circle(0% at 0% 100%); } }
+	&:nth-of-type(2) {
+		transition-delay: .2s;
 
-	&:hover, &:focus {
-		&::after { 
+		&::after {
+			clip-path: circle(0% at 100% 0%);
+		}
+	}
+
+	&:nth-of-type(3) {
+		transition-delay: .4s;
+
+		&::after {
+			clip-path: circle(0% at 0% 0%);
+		}
+	}
+
+	&:nth-of-type(4) {
+		transition-delay: .6s;
+
+		&::after {
+			clip-path: circle(0% at 100% 0%);
+		}
+	}
+
+	&:hover,
+	&:focus {
+		&::after {
 			box-shadow: -.5rem .8rem 2.5rem .4rem rgba($main, .1);
 			clip-path: circle(150% at 100% 0%);
 		}
+
 		.card__arrow {
 			opacity: 1;
 			transform: translateX(0%) scaleX(1);
@@ -58,6 +83,7 @@
 			width: auto;
 		}
 	}
+
 	&__arrow {
 		will-change: opacity, transform;
 		opacity: 0;
@@ -66,25 +92,43 @@
 		transform-origin: left center;
 	}
 
-	h3 { @extend %font-500; display: block;}
+	h3 {
+		@extend %font-500;
+		display: block;
+	}
+
 	p {
 		font-size: 1.5rem;
 		@extend %font-300;
 		color: $grey-2;
 	}
-	
+
 	&:nth-of-type(1) {
-		.icon--retro { background: $icon-yellow-gradient; box-shadow: var(--box-shadow-vals) rgba(#ffde93, $rgba-alpha) ;}
+		.icon--retro {
+			background: $icon-yellow-gradient;
+			box-shadow: var(--box-shadow-vals) rgba(#ffde93, $rgba-alpha);
+		}
 	}
 
 	&:nth-of-type(2) {
-		.icon--retro { background: $icon-red-gradient; box-shadow: var(--box-shadow-vals) rgba(#e85352, $rgba-alpha); }
+		.icon--retro {
+			background: $icon-red-gradient;
+			box-shadow: var(--box-shadow-vals) rgba(#e85352, $rgba-alpha);
+		}
 	}
+
 	&:nth-of-type(3) {
-		.icon--retro { background: $icon-blue-gradient; box-shadow: var(--box-shadow-vals) rgba(#7abaec, $rgba-alpha); }
+		.icon--retro {
+			background: $icon-blue-gradient;
+			box-shadow: var(--box-shadow-vals) rgba(#7abaec, $rgba-alpha);
+		}
 	}
+
 	&:nth-of-type(4) {
-		.icon--retro { background: $icon-purple-gradient; box-shadow: var(--box-shadow-vals) rgba(#8d5fe4, $rgba-alpha); }
+		.icon--retro {
+			background: $icon-purple-gradient;
+			box-shadow: var(--box-shadow-vals) rgba(#8d5fe4, $rgba-alpha);
+		}
 	}
 
 

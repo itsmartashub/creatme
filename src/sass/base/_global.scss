@@ -1,10 +1,13 @@
-
-html, body {
+html,
+body {
 	scroll-behavior: smooth;
 	width: 100%;
 	min-height: 100vh;
 	overflow-x: hidden;
 	transition: all 1s $outCirc;
+
+	scrollbar-color: $main transparent;
+	scrollbar-width: none;
 }
 
 body {
@@ -19,6 +22,7 @@ body {
 
 .content {
 	display: none;
+	// position: relative;
 	// transform: translate3d(-100%, 0, 0);
 	// transition: 2s ease-in-out transform;
 }
@@ -35,15 +39,20 @@ body {
 	background: $white;
 	width: .8rem;
 }
+
 ::-webkit-scrollbar-thumb {
 	background: $main;
 	@extend %radius-btn;
 }
+
 ::selection {
 	background: $main;
 	color: $white;
 }
-ul { list-style-type: none; }
+
+ul {
+	list-style-type: none;
+}
 
 a {
 	text-decoration: none;
@@ -63,36 +72,63 @@ a {
 	@extend %pos-fix;
 	bottom: 5%;
 	left: 50%;
-	
-	&::before { content: 'desktop ' }
+	display: none;
 
-	@include device(tab-land) { // width < 1200 ?
+	&::before {
+		content: 'desktop '
+	}
+
+	@include device(tab-land) {
+		// width < 1200 ?
 		background: purple;
-		&::before { content: 'tab-land'; }
+
+		&::before {
+			content: 'tab-land';
+		}
 	}
 
-	@include device(tab) { // width < 900 ?
+	@include device(tab) {
+		// width < 900 ?
 		background: teal;
-		&::before { content: 'tab'; }
+
+		&::before {
+			content: 'tab';
+		}
 	}
 
-	@include device(phone-land) { // width < 600 ?
+	@include device(phone-land) {
+		// width < 600 ?
 		background: lightgreen;
-		&::before { content: 'phone-land'; }
+
+		&::before {
+			content: 'phone-land';
+		}
 	}
 
-	@include device(phone) { // width < 500 ?
+	@include device(phone) {
+		// width < 500 ?
 		background: orangered;
-		&::before { content: 'phone'; }
+
+		&::before {
+			content: 'phone';
+		}
 	}
 
-	@include device(phone-ant) { // width < 320 ?
+	@include device(phone-ant) {
+		// width < 320 ?
 		background: coral;
-		&::before { content: 'phone-ant'; }
+
+		&::before {
+			content: 'phone-ant';
+		}
 	}
-	
-	@include device(big) { // width > 1920 ?
+
+	@include device(big) {
+		// width > 1920 ?
 		background: red;
-		&::before { content: 'big'; }
+
+		&::before {
+			content: 'big';
+		}
 	}
 }

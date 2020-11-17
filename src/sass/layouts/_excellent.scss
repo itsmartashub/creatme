@@ -1,6 +1,5 @@
 .excellent {
-	--img-size: 8rem;
-
+	--img-size: 8rem; 
 	background: $section-2-gradient;
 	border-top-left-radius: 20rem;
 	@extend %pos-rel;
@@ -85,7 +84,17 @@
 	@include device(tab) { p { padding: 0;} }
 
 	@include device(phone-land) {
-		height: 85vh;
+		// min-height: 200vh;
+
+		&__lines  {
+			top: 15%;
+			span {
+				&:nth-of-type(11),
+				&:nth-of-type(12),
+				&:nth-of-type(13),
+				&:nth-of-type(14) { display: none;}
+			}
+		}
 		
 		figure {
 			&:nth-of-type(1) { left: 10%; }
@@ -100,6 +109,7 @@
 
 	@include device(phone) {
 		--img-size: 6.5rem;
+		min-height: 85vh;
 
 		&__center {
 			h2::before {

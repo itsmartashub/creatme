@@ -78,7 +78,7 @@
 	}
 
 	@include device(phone-land) {
-		z-index: -1;
+		// z-index: -1;
 	}
 	@include device(phone) {
 		padding: 2rem 5vw;

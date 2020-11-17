@@ -5,11 +5,11 @@
 	border-radius: var(--form-border-radius);
 	background: url('../assets/images/pink-stairs-zoom.jpg') no-repeat center;
 	background-size: cover;
-	box-shadow: -1px 10px 20px 5px rgba($grey-1, .18); 
+	box-shadow: -1px 10px 20px 5px rgba($grey-1, .18);
 	width: 30rem;
 	@extend %grid;
-	margin: 0 15% 0 auto;
-	transform: translateY(-20%);
+	margin: -12% 15% 0 auto;
+	// transform: translateY(-20%);
 
 	&__img {
 		will-change: transform;
@@ -35,8 +35,10 @@
 			transition: all .8s $inOutQuad;
 		}
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			transform: scale(0.95);
+
 			&::before {
 				top: 0;
 				right: 0;
@@ -45,7 +47,7 @@
 			}
 		}
 
-		
+
 	}
 
 	form {
@@ -59,17 +61,22 @@
 	}
 
 	input {
-		background: rgba($grey-2, .08); color: currentColor;
+		background: rgba($grey-2, .08);
+		color: currentColor;
 		padding: 1.2rem 1.8rem;
 		font-size: 1.2rem;
 		@extend %radius-btn;
 
 		&::placeholder {
-			font-size: 1.2rem; font-family: inherit;
+			font-size: 1.2rem;
+			font-family: inherit;
 			color: lighten($grey-2, 15%);
 		}
 
-		&:focus { color: currentColor; background: rgba($grey-1, .3) }
+		&:focus {
+			color: currentColor;
+			background: rgba($grey-1, .3)
+		}
 	}
 
 	h4 {
@@ -84,7 +91,7 @@
 		width: 80%;
 	}
 
-	
+
 	@include device(phone-land) {
 		background: url('../assets/images/mob-pink-stairs-zoom.jpg') no-repeat center;
 		background-size: cover;

@@ -12,6 +12,7 @@ $p-l: 24vw;
 		border-bottom-right-radius: 20rem;
 		width: 20vw;
 		height: 100%;
+		z-index: 10;
 
 		background: url('../assets/images/plant-half.jpg');
 		background-size: cover;
@@ -24,23 +25,50 @@ $p-l: 24vw;
 		font-size: 2rem;
 		// @extend %grid-center;
 
-		.icon { justify-self:left; }
-			
-		p { margin-top: 3rem; text-transform: capitalize; }
+		.icon {
+			justify-self: left;
+		}
 
-		span:nth-of-type(1) { @extend %font-500;}
-		span:nth-of-type(2) { color: #57b9fa; text-transform: lowercase;}
+		p {
+			margin-top: 3rem;
+			text-transform: capitalize;
+		}
+
+		span:nth-of-type(1) {
+			@extend %font-500;
+		}
+
+		span:nth-of-type(2) {
+			overflow: hidden;
+			display: inline-flex;
+			align-content: center;
+
+			span {
+				color: #57b9fa;
+				text-transform: lowercase;
+				display: inline-block;
+			}
+		}
 	}
 
-	.section--2 { padding: 10rem var(--padding-lr) 5rem var(--padding-l); }
+	.section--2 {
+		padding: 10rem var(--padding-lr) 5rem var(--padding-l);
+	}
 
 
-	@include device(tab) {.image-plant { background-position-x: 25%; }}
+	@include device(tab) {
+		.image-plant {
+			background-position-x: 25%;
+		}
+	}
 
 	@include device(phone-ant) {
-		.image-plant { display: none;}
+		.image-plant {
+			display: none;
+		}
 
-		.section--1, .section--2 {
+		.section--1,
+		.section--2 {
 			padding: 5rem var(--padding-lr);
 			margin: 0 auto;
 		}

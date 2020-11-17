@@ -117,7 +117,134 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/index.js":[function(require,module,exports) {
+})({"js/Observer.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ANIM_OBSERVER = ANIM_OBSERVER;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+// const $from_bottom = document.querySelectorAll('.anim-from-bottom')
+// export default class Observer {
+// 	anim_observer() {
+// 		const appearOptions = {
+// 			threshold: 0.5,
+// 			rootMargin: '0px 0px 0px 0px'
+// 		}
+// 		const appearOnScroll = new IntersectionObserverEntry((entries, appearOptions) => {
+// 			entries.forEach(entry => {
+// 				console.log(entry.target.className)
+// 				// if(!entry.isIntersecting) { return }
+// 				// else {
+// 				// 	entry.target.classList.add('appear');
+// 				// 	appearOnScroll.unobserve(entry.target); //! stop looking on something when you've done ur job
+// 				// }
+// 			}, appearOptions)
+// 		})
+// 		// this.addObserveToEls($from_bottom, appearOnScroll)
+// 		$from_bottom.forEach(bottom => {
+// 			appearOnScroll.observe(bottom);
+// 		})
+// 	}
+// 	// addObserveToEls(_arrEls, _nameOfObserver) {
+// 	// 	_arrEls.forEach(el => {
+// 	// 		_nameOfObserver.observe(el)
+// 	// 	})
+// 	// }
+// }
+// const $from_bottom = document.querySelectorAll('.anim-from-bottom')
+// const $from_bottom = document.querySelectorAll('section')
+var $from_bottom = document.querySelectorAll('.anim--fromBottom');
+var $from_top = document.querySelectorAll('.anim--fromTop');
+var $from_left = document.querySelectorAll('.anim--fromLeft');
+var $from_right = document.querySelectorAll('.anim--fromRight');
+
+var $imgs = _toConsumableArray(document.querySelectorAll('.anim--imgs'));
+
+var $circle_imgs = document.querySelectorAll('.anim--circle-imgs');
+var $icons = document.querySelectorAll('.anim--icon');
+var $from_bottom_cards = document.querySelectorAll('.anim--card-fromBottom');
+var $scale = document.querySelectorAll('.anim--scale');
+var $fade_in = document.querySelectorAll('.anim--fadeIn');
+var $from_right_rotating = document.querySelector('.anim--fromRight-rotating'); // const $from_right_rotating = [...document.querySelectorAll('.anim--fromRight-rotating')]
+// const $from_right_rotating = document.querySelectorAll('.anim--fromRight-rotating')
+
+function ANIM_OBSERVER() {
+  console.log("ANIM_OBSERVER");
+  var appearOptions = {
+    threshold: 1,
+    rootMargin: '-300px 0px 0px 0px'
+  };
+  var appearOnScroll = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      // console.log(entry.target.className)
+      // console.log($from_right_rotating.className);
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve(entry.target); //! stop looking on something when u've done ur job
+      }
+    }, appearOptions);
+  }); //* primeniti observer na niz elemenata
+
+  appearOnScroll.observe($from_right_rotating);
+  $from_bottom.forEach(function (bottom) {
+    appearOnScroll.observe(bottom);
+  });
+  $from_bottom_cards.forEach(function (card) {
+    appearOnScroll.observe(card);
+  });
+  $from_top.forEach(function (top) {
+    appearOnScroll.observe(top);
+  });
+  $from_left.forEach(function (left) {
+    appearOnScroll.observe(left);
+  });
+  $from_right.forEach(function (right) {
+    appearOnScroll.observe(right);
+  });
+  $icons.forEach(function (icon) {
+    appearOnScroll.observe(icon);
+  });
+  $imgs.forEach(function (img) {
+    appearOnScroll.observe(img);
+  });
+  $circle_imgs.forEach(function (circle_img) {
+    appearOnScroll.observe(circle_img);
+  });
+  $scale.forEach(function (scale) {
+    appearOnScroll.observe(scale);
+  });
+  $fade_in.forEach(function (fade) {
+    appearOnScroll.observe(fade);
+  }); // $from_right_rotating.forEach(rot => {
+  // 	appearOnScroll.observe(rot);
+  // })
+  //* primeniti observer na 1 element
+  // let element = document.querySelector(_selector)
+  // appearOnScroll.observe(element)
+} // module.exports = {
+// 	observe_fun: ANIM_OBSERVER()
+// }
+},{}],"js/index.js":[function(require,module,exports) {
+"use strict";
+
+var _Observer = require("./Observer");
+
 // const body = document.body || document.documentElement.body,
 // 	scrollWrap = document.querySelector('.smooth-scroll-wrapper'),
 // 	height = scrollWrap.getBoundingClientRect().height - 1,
@@ -136,7 +263,16 @@ window.addEventListener('load', function () {
   hideAfterloader();
   hidePreloader();
   addAnimationClass();
-  setTimeout(removePreloaderAnimation, 3000);
+  setTimeout(removePreloaderAnimation, 3000); // const _observe = new Observer();
+  // if (!!window.IntersectionObserver) {
+  // 	_observe.anim_observer();
+  // } else {
+  // 	//todo dodati style za sve elemente da su vidljivi i bez transforma
+  // 	// _observe.browserDontSupportObserver();
+  // 	console.log('NE PODRZAVA OBSERVER');
+  // }
+
+  (0, _Observer.ANIM_OBSERVER)();
 });
 
 var displayContent = function displayContent() {
@@ -169,7 +305,7 @@ var pseudoElementsCss = function pseudoElementsCss() {
   var afterValue = window.getComputedStyle(document.querySelector('.preloader__circle'), '::after').getPropertyValue('animation');
   return console.log("beforeValue: ".concat(beforeValue, " and afterValue: ").concat(afterValue));
 };
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./Observer":"js/Observer.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -197,7 +333,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52405" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65319" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -374,4 +510,3 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
-//# sourceMappingURL=/js.00a46daa.js.map

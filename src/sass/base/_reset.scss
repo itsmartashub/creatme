@@ -7,21 +7,25 @@
 	box-sizing: inherit;
 	-webkit-tap-highlight-color: transparent;
 
-	&::after, &::before{
+	&::after,
+	&::before {
 		box-sizing: border-box;
 	}
 }
-input, button{
+
+input,
+button {
 	border: none;
 	box-shadow: none;
 	padding: 0;
 	border-radius: 0;
 }
+
 input[type=submit],
 input[type=reset],
 input[type=button],
 button {
-  user-select: none;
+	user-select: none;
 }
 
 // button
@@ -32,15 +36,26 @@ button {
 
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
 
-li{
+li {
 	list-style-type: none;
 }
 
@@ -52,8 +67,8 @@ img {
 //form
 input {
 	-webkit-appearance: none;
-	-moz-appearance:    none;
-	appearance:         none;
+	-moz-appearance: none;
+	appearance: none;
 	background-clip: border-box;
 	margin: 0;
 	outline: 0;

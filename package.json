@@ -4,7 +4,7 @@
 	"description": "Creatme landing page",
 	"main": "src/index.html",
 	"scripts": {
-		"dev": "parcel src/index.html --no-cache",
+		"dev": "parcel src/index.html --port 1234 --open --no-source-maps --no-cache",
 		"build:parcel": "parcel build src/index.html --no-source-maps --no-cache",
 		"build": "npm run clean && npm run build:parcel",
 		"clean": "rm -rf dist/*"
@@ -15,7 +15,10 @@
 	"devDependencies": {
 		"autoprefixer": "^9.8.6",
 		"node-sass": "^4.14.1",
-		"parcel-bundler": "^1.12.4"
+		"parcel-bundler": "^1.12.4",
+		"postcss-modules": "^3.2.2",
+		"postcss-uncss": "^0.17.0",
+		"uncss": "^0.17.3"
 	},
 	"browserslist": [
 		"> 1%",

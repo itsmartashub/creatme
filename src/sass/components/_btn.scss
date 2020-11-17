@@ -1,11 +1,14 @@
 %btn {
 	@extend %cursor;
 	padding: 1.8rem 3.2rem;
-	font-size: 1.4rem; font-family: $font-family;
+	font-size: 1.4rem;
+	font-family: $font-family;
 	display: inline-block;
 	border: none;
 
-	&:focus { outline: none; }
+	&:focus {
+		outline: none;
+	}
 }
 
 .btn {
@@ -28,7 +31,12 @@
 		transition: all .6s $inOutCirc;
 	}
 
-	&:hover, &:focus { &::after { clip-path: circle(150% at 0% 100%); } }
+	&:hover,
+	&:focus {
+		&::after {
+			clip-path: circle(150% at 0% 100%);
+		}
+	}
 
 	&--outline {
 		@extend %btn;
@@ -41,17 +49,16 @@
 		@extend %overflow-hidden;
 		z-index: 1;
 		transition: color .5s $inOutCirc;
-		
+
 
 		&::after {
 			@extend .btn::after;
-			// @extend .btn, ::after;
 		}
 
-		&:hover,&:focus {
+		&:hover,
+		&:focus {
 			color: $white;
 			@extend .btn:hover::after;
-			// @extend .btn, :hover, ::after;
 		}
 	}
 
@@ -60,11 +67,12 @@
 		@extend %font-600;
 		z-index: 2;
 		font-size: 1.8rem;
+		display: inline-flex;
 
 		&::after {
 			will-change: transform, opacity;
 			@extend %after;
-			bottom: -50%;
+			bottom: -20%;
 			left: 0;
 			background: $btn-gradient-2;
 			transform-origin: bottom center;
@@ -73,6 +81,13 @@
 			transition: all .4s ease;
 		}
 
-		&:hover { &::after { transform: scaleY(1); opacity: .6;} }
+		&:hover,
+		&:focus {
+			&::after {
+				transform: scaleY(1);
+				opacity: .6;
+				filter: blur(2px);
+			}
+		}
 	}
 }

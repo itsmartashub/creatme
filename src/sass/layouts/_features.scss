@@ -1,7 +1,7 @@
 .features {
 	// padding: 10rem 0;
-	padding: 15vw 0 0 0;
-	min-height: 140vh;
+	padding: 10vw 0;
+	min-height: 100vh;
 	@extend %grid-center;
 	grid-gap: 25vw 3vw;
 	grid-template-columns: repeat(2, 1fr);
@@ -22,63 +22,49 @@
 		will-change: height;
 		width: 100%;
 		padding: 0 5vw;
+
+		&>input[type=radio] {
+			display: none;
+		}
 	}
 
-	&__list {
-		// transition: all 1s $outCirc;
+	&__labels {
 		will-change: height;
+	}
 
-		li {
-			@extend %cursor;
-			border-bottom: 1.5px dashed rgba($grey-1, .5);
-			@extend %grid;
-			grid-template-columns: max-content 1fr;
-			grid-template-rows: max-content 1fr;
-			grid-gap: 0 3rem;
-			align-items: center;
-			align-content: center;
-			padding: 2.5rem 0;
-			transition: all 1s $outCirc;
+	&__label {
+		@extend %cursor;
+		border-bottom: 1.5px dashed rgba($grey-1, .5);
+		@extend %grid;
+		grid-template-columns: max-content 1fr;
+		grid-template-rows: max-content 1fr;
+		grid-gap: 0 3rem;
+		align-items: center;
+		align-content: center;
+		padding: 2.5rem 0;
+		// transition: all 1s $outCirc;
 
-			&:nth-of-type(1) { border-top: 1.5px dashed rgba($grey-1, .5);}
-
-			&:hover,&:focus {
-				h3 { color: $main;}
-
-				.icon--retro {
-					background: $main;
-					color: $white;
-					span {
-						transform: rotate(45deg);
-						opacity: 1;
-					}
-				}
-				p {
-					height: 12rem;
-					min-height: 10rem;
-					// max-height: max-content; //todo
-					opacity: 1;
-					// transform: translate3d(0, 0, 0) skew(0) scaleY(1);
-					transform: translate3d(0, 0, 0) scaleY(1);
-				}
-			}
+		&:nth-of-type(1) {
+			border-top: 1.5px dashed rgba($grey-1, .5);
 		}
+
 		.icon--retro {
-			will-change: color, background;
+			will-change: color;
 			grid-column: 1/2;
 			grid-row: 1/2;
-			font-size: 2.8rem;
+			font-size: calc(var(--icon-size)/1.8);
 			@extend %font-300;
 			background: $grey;
 			color: $bluegrey;
 			transition: all 1s $outCirc;
 
-			span {
+			&::after {
 				will-change: opacity, transform;
-				transform: rotate(0deg);
+				content: '+';
+				transform: none;
 				transform-origin: center;
 				opacity: .5;
-				transition: transform 1s $outCirc;
+				transition: all 1s $outCirc;
 			}
 		}
 
@@ -90,6 +76,7 @@
 			color: $bluegrey;
 			transition: color 1s $outCirc;
 		}
+
 		p {
 			will-change: height, opacity, transform;
 			grid-column: 2/-1;
@@ -107,30 +94,133 @@
 			transition: height .8s $outCirc, transform .8s $outCirc, opacity .2s $outCirc;
 		}
 
-		li.active { @extend li:hover; }
+		&:hover {
+			h3 {
+				@extend %features-labels-h3;
+			}
+		}
 	}
 
-	@include device(tab-land) { &__list { li:hover p { height: 15rem; } } }
+	%features-labels-h3 {
+		color: $main;
+	}
+
+	%features-labels-p {
+		height: 12rem;
+		min-height: 10rem;
+		// max-height: max-content; //todo
+		opacity: 1;
+		// transform: translate3d(0, 0, 0) skew(0) scaleY(1);
+		transform: translate3d(0, 0, 0) scaleY(1);
+	}
+
+	%features-labels-icon {
+		background: $main !important;
+		color: $white !important;
+
+		&::after {
+			transform: rotate(45deg) !important;
+			opacity: 1 !important;
+		}
+	}
+
+	#features__label--1:checked {
+		&~.features__labels .features__label:nth-of-type(1) {
+			h3 {
+				@extend %features-labels-h3;
+			}
+
+			.icon--retro {
+				@extend %features-labels-icon;
+			}
+
+			p {
+				@extend %features-labels-p;
+			}
+		}
+	}
+
+	#features__label--2:checked {
+		&~.features__labels .features__label:nth-of-type(2) {
+			h3 {
+				@extend %features-labels-h3;
+			}
+
+			.icon--retro {
+				@extend %features-labels-icon;
+			}
+
+			p {
+				@extend %features-labels-p;
+			}
+		}
+	}
+
+	#features__label--3:checked {
+		&~.features__labels .features__label:nth-of-type(3) {
+			h3 {
+				@extend %features-labels-h3;
+			}
+
+			.icon--retro {
+				@extend %features-labels-icon;
+			}
+
+			p {
+				@extend %features-labels-p;
+			}
+		}
+	}
+
+	#features__label--4:checked {
+		&~.features__labels .features__label:nth-of-type(4) {
+			h3 {
+				@extend %features-labels-h3;
+			}
+
+			.icon--retro {
+				@extend %features-labels-icon;
+			}
+
+			p {
+				@extend %features-labels-p;
+			}
+		}
+	}
+
+
+	@include device(tab-land) {
+		%features-labels-p {
+			height: 15rem;
+		}
+	}
 
 	@include device(tab) {
 		padding: 15vw 0 0vw 0;
 		max-height: auto;
 		grid-template-columns: 1fr;
-		&__right { padding: 0 10vw; min-height: 80vmax;}
-		&__list { li:hover p { height: 8vw; } } 
+
+		&__right {
+			padding: 0 10vw;
+			min-height: 60vmax;
+		}
+
+		%features-labels-p {
+			height: 8vw;
+		}
 	}
 
 	@include device(phone) {
-		height: auto;
-		padding: 15vw 0 30vw 0;
 		&__left {
 			background: url('../assets/images/mob-clock-and-plant-on-desk-nature-min.jpg') no-repeat right;
 			background-size: cover;
 		}
-		
 
-		&__list { li:hover p { height: 14rem; max-height: max-content; } }
+		%features-labels-p {
+			height: auto;
+			max-height: max-content;
+		}
 	}
-	@include device(phone-ant) { &__list { li:hover p { height: max-content; } } }
+
 
 }

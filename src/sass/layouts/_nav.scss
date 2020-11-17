@@ -55,7 +55,7 @@
 			&:nth-of-type(1),
 			&:nth-of-type(2) {
 				margin-right: 2rem;
-				background-image: linear-gradient(90deg, darken($main, 15%) 50%, transparent 50%, transparent 0%, );
+				background-image: linear-gradient(90deg, darken($main, 15%) 50%, transparent 50%, transparent 0%);
 				background-size: 200%;
 				-webkit-background-clip: text;
 				background-clip: text;
@@ -111,6 +111,8 @@
 		--burger-height: 3rem;
 		flex-wrap: nowrap;
 		justify-content: space-between;
+		z-index: 10;
+		position: relative;
 
 		&__logo { 
 			margin: 0;
@@ -124,17 +126,18 @@
 			position: absolute;
 			top: 0; 
 			left: 0;
-			z-index: 2;
-			width: 100%;
+			width: 100vw;
 			padding: 30vw var(--padding-lr) 20vw var(--padding-lr);
 			// transform: translateY(-100%);
 			// transform-origin: center top;
 			font-size: 2rem;
+			// z-index: 90;
 
 			clip-path: circle(0% at 89% 8%);
 			visibility: hidden;
 			transition: .6s $inOutCubic;
 			box-shadow: 10px 0px 20px rgba($grey-2, .5);
+			// display: block;
 
 			.btn,
 			.btn--outline {
