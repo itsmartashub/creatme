@@ -1,28 +1,31 @@
-$font-family: 'Inter', sans-serif;
+$font-family: 'Inter',
+sans-serif;
 $font-size: 1.6rem;
 $line-height: 1.8;
 $letter-spacing: .1px;
 
 
 html {
-	font-size: 62.5%; // 1rem = 10px, j 10px/16px = 62.5%
-	// //! uvek VECI ide pre MANJEG msm font-size, ne device koji je, kada je DESKTOP-FIRST, za MOBILE-FIRST od MANJEG ka VECEM
+	font-size: 62.5%;
 
-	@include device(tab-land) { // width < 1200 ?
-		font-size: 56.25%; // 1rem = 9px, 9/16 = 50%
+	@include device(tab-land) {
+		font-size: 56.25%;
 	}
-	@include device(tab) { // width < 900 ?
-		font-size: 50%; // 1rem = 8px, 8/16 = 50%, da li je width manja od 50%, i mogu da pbrisem jedan, tj phone, jer oboje apply 50%
+
+	@include device(tab) {
+		font-size: 50%;
 	}
+
 	@include device(phone) {
-		font-size: 43.75%; // 1rem = 7px, 7/16 =  43.75%
+		font-size: 43.75%;
 	}
+
 	@include device(phone-ant) {
-		font-size: 37.5%; // 1rem = 6px, 6/16 =  37.5%
+		font-size: 37.5%;
 	}
 
 	@include device(big) {
-		font-size: 75%; // 1rem = 12px, 12/16 = 75%
+		font-size: 75%;
 	}
 }
 
@@ -34,7 +37,11 @@ body {
 	letter-spacing: $letter-spacing;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
 	line-height: 1.4;
 }
 
@@ -52,7 +59,7 @@ h1, h2, h3, h4, h5 {
 .paragraph {
 	color: darken($bluegrey, 12%);
 	font-size: inherit;
-	font-size: 1.8rem; 
+	font-size: 1.8rem;
 	text-transform: capitalize;
 	opacity: .9;
 }

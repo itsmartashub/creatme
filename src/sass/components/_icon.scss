@@ -1,5 +1,3 @@
-:root { --icon-size: 4.5rem; }
-
 %icon {
 	width: var(--icon-size);
 	height: var(--icon-size);
@@ -10,12 +8,14 @@
 .icon {
 	@extend %icon;
 	background: $icon-bg-gradient;
-	
+
 	&--retro {
-		// --icon-size: 4rem;
 		@extend %icon;
 		background: $main;
-		svg { fill: $white; }
+
+		svg {
+			fill: $white;
+		}
 	}
 }
 

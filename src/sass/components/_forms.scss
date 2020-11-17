@@ -1,6 +1,5 @@
 .forms {
 	--form-border-radius: 3.5rem;
-
 	@extend %radius-img; // 4.5rem
 	border-radius: var(--form-border-radius);
 	background: url('../assets/images/pink-stairs-zoom.jpg') no-repeat center;
@@ -9,7 +8,6 @@
 	width: 30rem;
 	@extend %grid;
 	margin: -12% 15% 0 auto;
-	// transform: translateY(-20%);
 
 	&__img {
 		will-change: transform;
@@ -17,7 +15,6 @@
 		background: url('../assets/images/chinese-girl-with-flowers.jpg') no-repeat center;
 		background-size: cover;
 		margin: 25% auto 15% auto;
-
 		width: 7rem;
 		height: 7rem;
 		box-shadow: -1px 10px 20px 5px rgba($grey-1, .18);
@@ -46,18 +43,15 @@
 				transform: rotate(180deg);
 			}
 		}
-
-
 	}
 
 	form {
 		background: $white;
 		padding: 2rem 4rem 0 4rem;
 		border-radius: var(--form-border-radius);
-		width: 100%;
+		@extend %w-100;
 		@extend %grid;
 		grid-gap: 1.2rem;
-		// align-self: flex-end;
 	}
 
 	input {
@@ -86,7 +80,7 @@
 
 	.btn {
 		transform: translateY(45%);
-		display: block;
+		@extend %block;
 		margin: 0 auto;
 		width: 80%;
 	}

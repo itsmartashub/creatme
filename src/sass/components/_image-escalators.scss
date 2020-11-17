@@ -2,7 +2,7 @@
 	@extend %pos-abs;
 	top: 0;
 	right: 0;
-	z-index: -1;
+	@extend %z-minus;
 	background: url('../assets/images/pink-stairs-big.jpg') no-repeat;
 	background-size: cover;
 	background-position: top center;

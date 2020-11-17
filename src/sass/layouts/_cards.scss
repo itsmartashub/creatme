@@ -1,23 +1,17 @@
 .cards {
 	background: $section-2-gradient;
 	border-top-right-radius: 15rem;
-	// display: grid;
-	// grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-	// grid-gap: 1rem 4rem;
-
 	@extend %flex-center;
 	flex-wrap: wrap;
 }
 
-
 .card {
-	padding: 4rem;
 	@extend %radius-icon;
 	@extend %cursor;
 	@extend %pos-rel;
-
 	width: 30rem;
 	margin: 1rem;
+	padding: 4rem;
 	z-index: 2;
 
 	&>* {
@@ -25,14 +19,13 @@
 	}
 
 	&::after {
-
 		will-change: clip-path, box-shadow;
 		@extend %radius-icon;
 		@extend %after;
 		top: 0;
 		left: 0;
 		clip-path: circle(0% at 0% 100%);
-		z-index: -1;
+		@extend %z-minus;
 		background: white;
 		transition: all 1s ease-in-out;
 	}
@@ -86,7 +79,7 @@
 
 	&__arrow {
 		will-change: opacity, transform;
-		opacity: 0;
+		@extend %opacity-0;
 		transform: translateX(-50%) scaleX(0);
 		transition: opacity .6s ease .3s, transform .3s ease .4s;
 		transform-origin: left center;
@@ -94,7 +87,7 @@
 
 	h3 {
 		@extend %font-500;
-		display: block;
+		@extend %block;
 	}
 
 	p {

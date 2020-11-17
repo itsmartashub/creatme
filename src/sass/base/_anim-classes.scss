@@ -13,6 +13,16 @@
 		&__top {
 			h1 {
 				animation: fadein_fromBottom 1s $outBack backwards calc(var(--duration) + .8s);
+
+				span {
+					&::after {
+						animation: scaleY 1.3s $outBack backwards calc(var(--duration) + .8s);
+					}
+
+					&:nth-of-type(2)::after {
+						animation: scaleY 1.3s $outBack backwards calc(var(--duration) + 1.2s);
+					}
+				}
 			}
 
 			p {
@@ -131,7 +141,7 @@
 
 		svg {
 			opacity: 0;
-			transform: translate3d(0, -#{$value}, 0);
+			transform: translate3d(0, -#{$value}, 0) scale(0);
 			transition-delay: .4s;
 			transition: transform 1.2s $outSmooth, opacity .8s $outSmooth;
 		}
@@ -141,22 +151,22 @@
 
 			svg {
 				opacity: 1 !important;
-				transform: initial !important;
+				transform: translate3d(0, 0, 0) scale(1) !important;
 			}
 		}
 	}
 
 	&--imgs {
 		transform: translate3d(-100%, 0, 0);
-		transition: opacity 1.3s $outSmooth, transform 2s $outSmooth;
+		transition: opacity 1.3s $outSmooth, transform 2s $outSmooth !important;
 	}
 
 	&--circle-imgs {
 		will-change: clip-path, opacity;
 		opacity: 0;
 		clip-path: circle(0% at 50% 50%);
-		// transition: all .5s $outCirc;
-		transition: opacity .4s ease, clip-path .2s ease;
+		// transition: all 1s $inOutQuad;
+		transition: all 2s $inOutBack;
 
 		&.appear {
 			opacity: 1 !important;
@@ -222,15 +232,13 @@
 	}
 }
 
-@keyframes scaleX {
+@keyframes scaleY {
 	from {
-		transform: scaleX(0);
-		opacity: 0;
+		transform: scaleY(1);
 	}
 
 	to {
-		transform: scaleX(1);
-		opacity: 1;
+		transform: scaleY(0);
 	}
 }
 

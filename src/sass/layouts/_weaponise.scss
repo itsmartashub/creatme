@@ -19,16 +19,22 @@
 	&__right {
 		@extend %pos-rel;
 		overflow: visible;
+		// perspective: 75rem;
+
+		&:hover {
+			.weaponise__img-wrapper-1 img {
+				animation: 8s hoverCircleImg $inOutQuad infinite reverse;
+			}
+
+			.weaponise__img-wrapper-2 {
+				animation: 8s hoverModel $inOutCubic infinite reverse;
+			}
+		}
 	}
 
 	&__img-wrapper-1 {
 		--img-circle-size: 35vw;
-		// clip-path: circle(50% at 50% 50%);
-		// transition: all .5s $outCirc !important;
 
-		// &:hover {
-		// 	clip-path: circle(0% at 50% 50%);
-		// }
 
 		source,
 		img {
@@ -51,8 +57,8 @@
 		img {
 			@extend %radius-img;
 			@extend %object-fit;
-			width: 100%;
-			height: 100%;
+			@extend %w-100;
+			@extend %h-100;
 			transition-delay: .5s;
 		}
 	}
@@ -63,16 +69,13 @@
 		left: 0%;
 		transform: translate3d(10%, -50%, 0);
 		width: 16vw;
-		// padding: 1.8rem 2rem;
 		padding: 2.3rem .5vw;
-		// padding: 1.6vh 2vw;
 
 		background: $white;
 		@extend %flex-center;
 		justify-content: space-evenly;
 		border-radius: 2rem;
 		box-shadow: -1px 10px 20px 5px rgba($grey-1, .18);
-		// transition: all .4s ease;
 		@extend %overflow-hidden;
 		transition-delay: .6s;
 	}
@@ -96,7 +99,7 @@
 
 		span {
 			will-change: line-height, transform, color;
-			display: inline-block;
+			@extend %inline-block;
 			font-size: 1.8rem;
 			line-height: initial;
 			color: #c4c4c4;
@@ -217,15 +220,45 @@
 
 
 @keyframes hoverDots {
-	0% {
+
+	0%,
+	100% {
 		transform: translateY(0%);
 	}
 
 	50% {
 		transform: translateY(-15%);
 	}
+}
 
+@keyframes hoverCircleImg {
+
+	0%,
 	100% {
-		transform: translateY(0%);
+		transform: translate3d(0, 0, 0);
 	}
+
+	30% {
+		transform: translate3d(0, -2rem, 0);
+	}
+
+	60% {
+		transform: translate3d(0, 2rem, 0);
+	}
+}
+
+@keyframes hoverModel {
+
+	0%,
+	100% {
+		transform: translate(-30%, -50%);
+	}
+
+	50% {
+		transform: translate(-15%, -50%);
+	}
+
+	// 66% {
+	// 	transform: translate(-50%, -50%);
+	// }
 }

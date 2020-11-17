@@ -35,21 +35,38 @@
 			transition: .9s $outCirc;
 		}
 
-		&:hover, &:focus {
-			&::after { transform: scale(1) translateY(0); }
-			.createcv__img { transform: scale(1.5); }
+		&:hover,
+		&:focus {
+			&::after {
+				transform: scale(1) translateY(0);
+			}
+
+			.createcv__img {
+				transform: scale(1.5);
+			}
 		}
 
-		&:nth-of-type(1) { box-shadow: var(--box-shadow-vals) rgba(#fd8f6e, $rgba-alpha)}
-		&:nth-of-type(2) { box-shadow: var(--box-shadow-vals) rgba($rose, $rgba-alpha)}
-		&:nth-of-type(3) { box-shadow: var(--box-shadow-vals) rgba(#c8e3ec, $rgba-alpha)}
-		&:nth-of-type(4) { box-shadow: var(--box-shadow-vals) rgba(#c8e3ec, $rgba-alpha)}
+		&:nth-of-type(1) {
+			box-shadow: var(--box-shadow-vals) rgba(#fd8f6e, $rgba-alpha)
+		}
+
+		&:nth-of-type(2) {
+			box-shadow: var(--box-shadow-vals) rgba($rose, $rgba-alpha)
+		}
+
+		&:nth-of-type(3) {
+			box-shadow: var(--box-shadow-vals) rgba(#c8e3ec, $rgba-alpha)
+		}
+
+		&:nth-of-type(4) {
+			box-shadow: var(--box-shadow-vals) rgba(#c8e3ec, $rgba-alpha)
+		}
 	}
 
 	&__img {
 		will-change: transform;
-		width: 100%;
-		height: 100%;
+		@extend %w-100;
+		@extend %h-100;
 		@extend %object-fit;
 		transform-origin: center top;
 		transition: transform 1s $outSmooth;
@@ -66,8 +83,7 @@
 
 
 	@include device(tab-land) {
-		// --img-size: 4.8rem;
-		--img-size: 5.2rem;
+		--img-size: 5.4rem;
 		padding: 2rem 3.5rem;
 
 		.btn {
@@ -78,14 +94,20 @@
 	}
 
 	@include device(phone-land) {
-		// z-index: -1;
+		width: 90vw;
 	}
+
 	@include device(phone) {
 		padding: 2rem 5vw;
-		
 
-		&__img-wrapper { margin-right: 2vw;}
-		.btn {  margin-left: 4%; padding: 1.7rem 0rem; }
+		&__img-wrapper {
+			margin: 1vw;
+		}
+
+		.btn {
+			margin-left: 4%;
+			padding: 1.7rem 0rem;
+		}
 	}
 
 	@include device(phone-ant) {
@@ -93,7 +115,9 @@
 		flex-wrap: wrap;
 		justify-content: center;
 
-		&__img-wrapper { margin-left: 4vw;}
+		&__img-wrapper {
+			margin-left: 4vw;
+		}
 
 		.btn {
 			flex: auto;

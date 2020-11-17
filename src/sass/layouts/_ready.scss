@@ -29,7 +29,6 @@
 		&:hover,
 		&:focus {
 
-			// &::after { transform: scaleX(1); }
 			&::after {
 				transform: scale(1);
 			}
@@ -38,11 +37,10 @@
 		&::after {
 			will-change: transform;
 			@extend %after;
-			z-index: -1;
+			@extend %z-minus;
 			background: darken(#fff5f5, 1%);
 			border-radius: 2rem;
 			transform: scale(0);
-			// transform: scaleX(0);
 			transition: .5s $outQuart transform;
 		}
 
@@ -91,7 +89,7 @@
 	&__buttons {
 		@extend %flex-center;
 		flex-wrap: wrap;
-		overflow: hidden;
+		@extend %overflow-hidden;
 
 		button {
 			width: 25rem;

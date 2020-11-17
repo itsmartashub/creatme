@@ -1,10 +1,4 @@
 .footer {
-	// background: linear-gradient(to bottom, rgba(#edecef, 1), rgba(#edecef, .0)),
-	// 	url('../assets/images/clock-and-plant-on-desk-nature-min.jpg');
-
-	// background: linear-gradient(to bottom, rgba(#edecef, 1), rgba(#edecef, .0)),
-	// 	url('../assets/images/clock-and-plant-on-desk-nature-min-bluredx2.jpg');
-
 	background-image: linear-gradient(to bottom, rgba(#edecef, 1), rgba(#edecef, .0)),
 		url('../assets/images/clock-and-plant-on-desk-nature-min-blured.jpg');
 	background-size: cover;
@@ -12,8 +6,6 @@
 	background-position: left bottom;
 	padding: 10rem 10vw;
 	box-shadow: 0px -20rem 5rem 5rem rgba(#edecef, 1);
-
-	// grid-template-columns: repeat(auto-fit, minmax(45rem, 1fr));
 
 	&__top {
 		@extend %grid;
@@ -25,7 +17,6 @@
 
 	&__nav {
 		@extend %grid;
-		// justify-content: space-around; //todo vidi ovo u mobile!!
 		grid-gap: 5vw;
 		justify-content: space-evenly;
 		grid-auto-flow: column;
@@ -41,10 +32,17 @@
 			color: $grey-2;
 			font-size: 1.4rem;
 			margin-bottom: .4rem;
-			transition: color .5s ease;
+
+			&,
+			a {
+				transition: all .35s $inOutQuad;
+			}
+
 
 			&:hover,
 			&:focus {
+				transform: translateX(5%);
+
 				a {
 					color: $red;
 				}
@@ -53,8 +51,6 @@
 	}
 
 	&__location {
-
-		// padding: 0 2vw;
 		h6 {
 			color: $grey-2;
 			@extend %font-300;
@@ -73,8 +69,6 @@
 					content: '';
 					@extend %abs-center;
 					@extend %radius-50;
-					// top: 50%;
-					// left: 50%;
 					background: $red;
 					width: 20%;
 					height: 20%;
@@ -114,11 +108,10 @@
 		.icon--retro {
 			width: 5rem;
 			height: 5rem;
-			border-radius: 1.5rem;
+			@extend %radius-icon;
 			margin-left: -7rem;
 		}
 	}
-
 
 	&__bottom {
 		color: $grey-2;
@@ -126,10 +119,10 @@
 		padding: 5rem 3rem;
 		font-size: 3rem;
 		@extend %font-300;
-		overflow: hidden;
+		@extend %overflow-hidden;
 
 		a {
-			display: block;
+			@extend %block;
 
 			&:nth-of-type(2) {
 				font-size: 2rem;

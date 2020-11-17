@@ -1,5 +1,4 @@
 .features {
-	// padding: 10rem 0;
 	padding: 10vw 0;
 	min-height: 100vh;
 	@extend %grid-center;
@@ -10,17 +9,27 @@
 	&__left {
 		border-top-right-radius: 12em;
 		border-bottom-right-radius: 12em;
-		background: url('../assets/images/clock-and-plant-on-desk-nature-min.jpg') no-repeat;
-		background-position: right;
+		background-image: url('../assets/images/clock-and-plant-on-desk-nature-min.jpg');
+		background-repeat: no-repeat;
+		background-position: 90% center;
 		background-size: cover;
-		width: 100%;
+		@extend %w-100;
 		height: 45vmax;
 		margin-top: 12%;
+		// transition: background-position 1s $inOutBack;
+
+		&:hover {
+			// background-position: 70% center;
+
+			.btn {
+				animation: 10s hoverBtn ease-in-out reverse infinite;
+			}
+		}
 	}
 
 	&__right {
 		will-change: height;
-		width: 100%;
+		@extend %w-100;
 		padding: 0 5vw;
 
 		&>input[type=radio] {
@@ -42,7 +51,6 @@
 		align-items: center;
 		align-content: center;
 		padding: 2.5rem 0;
-		// transition: all 1s $outCirc;
 
 		&:nth-of-type(1) {
 			border-top: 1.5px dashed rgba($grey-1, .5);
@@ -88,7 +96,6 @@
 			height: 0;
 			opacity: 0;
 			pointer-events: none;
-			// transform: translate3d(0, -20%, 0) skew(-10deg) scaleY(0);
 			transform: translate3d(0, -20%, 0) scaleY(0);
 			transform-origin: center center;
 			transition: height .8s $outCirc, transform .8s $outCirc, opacity .2s $outCirc;
@@ -108,9 +115,7 @@
 	%features-labels-p {
 		height: 12rem;
 		min-height: 10rem;
-		// max-height: max-content; //todo
 		opacity: 1;
-		// transform: translate3d(0, 0, 0) skew(0) scaleY(1);
 		transform: translate3d(0, 0, 0) scaleY(1);
 	}
 
@@ -223,4 +228,20 @@
 	}
 
 
+}
+
+@keyframes hoverBtn {
+
+	0%,
+	100% {
+		transform: translateY(45%);
+	}
+
+	35% {
+		transform: translateY(60%);
+	}
+
+	70% {
+		transform: translateY(25%);
+	}
 }

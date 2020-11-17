@@ -1,23 +1,43 @@
-%pos-fix { position: fixed; }
-%pos-abs { position: absolute; }
-%pos-rel { position: relative; }
+%pos-fix {
+	position: fixed;
+}
 
-%height-auto { height: auto; }
+%pos-abs {
+	position: absolute;
+}
 
-%object-fit { object-fit: cover; }
+%pos-rel {
+	position: relative;
+}
 
-%grid { display: grid; }
-%flex { display: flex; }
+%height-auto {
+	height: auto;
+}
+
+%object-fit {
+	object-fit: cover;
+}
+
+%block {
+	display: block;
+}
+
+%inline-block {
+	display: inline-block;
+}
+
+%grid {
+	display: grid;
+}
+
+%flex {
+	display: flex;
+}
 
 %grid-center {
 	@extend %grid;
 	place-items: center;
 	justify-content: center;
-}
-%grid-jsb {
-	@extend %grid;
-	align-items: center;
-	justify-content: space-between;
 }
 
 %flex-center {
@@ -25,17 +45,26 @@
 	align-items: center;
 	justify-content: center;
 }
+
 %flex-jsb {
 	@extend %flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
+%w-100 {
+	width: 100%;
+}
+
+%h-100 {
+	height: 100%;
+}
+
 %after {
 	content: '';
 	@extend %pos-abs;
-	width: 100%;
-	height: 100%;
+	@extend %w-100;
+	@extend %h-100;
 }
 
 %abs-center {
@@ -45,15 +74,56 @@
 	transform: translate(-50%, -50%);
 }
 
-%overflow-hidden { overflow: hidden; }
-%radius-btn { border-radius: 8px; }
-%radius-icon { border-radius: 1.5rem; }
-%radius-img { border-radius: 4.5rem; }
-%radius-50 { border-radius: 50%; }
-%cursor { cursor: pointer; }
+%overflow-hidden {
+	overflow: hidden;
+}
 
-%text-center { text-align: center; }
-%font-600 { font-weight: 600; }
-%font-500 { font-weight: 500; }
-%font-300 { font-weight: 300; }
-%z-minus { z-index: -1; }
+%radius-btn {
+	border-radius: 8px;
+}
+
+%radius-icon {
+	border-radius: 1.5rem;
+}
+
+%radius-img {
+	border-radius: 4.5rem;
+}
+
+%radius-50 {
+	border-radius: 50%;
+}
+
+%cursor {
+	cursor: pointer;
+}
+
+%text-center {
+	text-align: center;
+}
+
+%opacity-0 {
+	opacity: 0;
+}
+
+
+
+%font-700 {
+	font-weight: 700;
+}
+
+%font-600 {
+	font-weight: 600;
+}
+
+%font-500 {
+	font-weight: 500;
+}
+
+%font-300 {
+	font-weight: 300;
+}
+
+%z-minus {
+	z-index: -1;
+}

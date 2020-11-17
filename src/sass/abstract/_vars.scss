@@ -1,49 +1,32 @@
+:root {
+	--box-shadow-vals: -5px 10px 10px -2px;
+	--padding-lr: 10vw;
+	--icon-size: 4.5rem;
+}
+
+$main: #fb6e6c; // #ff7e7d,#fb6e6c
 $white: #fffefd;
-$whitesmoke: #faf6f4;
 $grey-1: #b2acac;
-$grey-2: #787f98; 
-//  #c2c2c2, #949494, #f6f5f7
+$grey-2: #787f98;
 $grey: #f6f5f7;
-// $bluegrey: #717171;
 $bluegrey: #949494;
- //  #c2c2c2, #949494, #f6f5f7
 $rose: #e1a99f;
 $red: #cf3f37;
-$orangered: #f65d4f; // #ea5655
-$orangerose: #ec8968;
 $brown: #382821;
 $black: #373737; // #373737
 
-$arrow: #ee807f; // line-bottom #db657c
-$main: #fb6e6c; // #ff7e7d,#fb6e6c
-$back-main: #ffeee2;
-
-
-
-$btn-gradient: linear-gradient(to right, #fa6a69, #e85352);
 $btn-gradient-2: linear-gradient(to right, #f28b76, #eb5756);
 $btn-gradient-3: linear-gradient(to right, #f96968, #e85352);
-// $section-2-gradient: linear-gradient(to bottom, #fff7f2, #fffefd);
 $section-2-gradient: linear-gradient(to bottom, #fff7f2, $white);
 $section-5-gradient: linear-gradient(to bottom, #fff5f5, #edecef);
-
-$footer-gradient: linear-gradient(to bottom, #edecef, #edecef);
-$rose-bg: #ffeded;
 $icon-bg-gradient: linear-gradient(to bottom, #ffede0, #fff9ec);
 $icon-yellow-gradient: linear-gradient(to bottom, #ffde93, #fed576);
 $icon-red-gradient: linear-gradient(to bottom, #e85352, #fa6a69);
 $icon-blue-gradient: linear-gradient(to bottom, #7abaec, #71b7ee);
 $icon-purple-gradient: linear-gradient(to bottom, #8d5fe4, #895cdc);
-$icon: #fb6e6c; // #ff7e7d, #ea5554
-$section-2-shadow-card: #fdf2ea;
 
 
-:root {
-	--box-shadow-vals: -5px 10px 10px -2px;
-	--padding-lr: 10vw;
-}
 $rgba-alpha: .3;
-
 
 
 $inQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
@@ -52,6 +35,8 @@ $inQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
 $inQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
 $inExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
 $inCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$inBack: cubic-bezier(0.36, 0, 0.66, -0.56);
+;
 
 $outSmooth: cubic-bezier(0.215, 0.610, 0.355, 1.000);
 $outQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -69,10 +54,3 @@ $inOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
 $inOutExpo: cubic-bezier(1, 0, 0, 1);
 $inOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 $inOutBack: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-
-
-// @include device(tab-land) {}
-// @include device(tab) {}
-// @include device(phone-land) {}
-// @include device(phone) {}
-// @include device(phone-ant) {}

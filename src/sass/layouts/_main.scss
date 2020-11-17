@@ -11,19 +11,17 @@ $p-l: 24vw;
 		border-top-right-radius: 20rem;
 		border-bottom-right-radius: 20rem;
 		width: 20vw;
-		height: 100%;
+		@extend %h-100;
 		z-index: 10;
 
 		background: url('../assets/images/plant-half.jpg');
 		background-size: cover;
-		// background-position: 50% center;
 	}
 
 	.section--1 {
 		padding: 10rem var(--padding-lr) 5rem var(--padding-l);
 		margin-left: 6rem;
 		font-size: 2rem;
-		// @extend %grid-center;
 
 		.icon {
 			justify-self: left;
@@ -39,14 +37,14 @@ $p-l: 24vw;
 		}
 
 		span:nth-of-type(2) {
-			overflow: hidden;
+			@extend %overflow-hidden;
 			display: inline-flex;
 			align-content: center;
 
 			span {
 				color: #57b9fa;
 				text-transform: lowercase;
-				display: inline-block;
+				@extend %inline-block;
 			}
 		}
 	}

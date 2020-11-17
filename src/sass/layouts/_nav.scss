@@ -16,35 +16,36 @@
 			height: 120%;
 			top: -10%;
 			left: -10%;
-			z-index: 1;
-			// transform: scaleX(0);
-			// transform-origin: left center;
-			// transition: .8s transform $inOutCirc;
-			transition: .8s clip-path $inOutCirc;
 			border-radius: 1rem;
 			clip-path: circle(0% at 0% 100%);
+			transition: .8s clip-path $inOutCirc;
 		}
 
-		&:hover, &:focus {
+		&:hover,
+		&:focus {
 			&::before {
-				// transform: scaleX(1);
 				clip-path: circle(100% at 0% 100%);
 			}
 		}
 
 		svg {
-			cursor: pointer;
+			@extend %cursor;
 			width: 20vw;
 			@extend %height-auto;
 			z-index: 2;
-			position: relative;
+			@extend %pos-rel;
 			transition: .5s ease all;
 
-			stop { transition: .5s ease all; }
+			stop {
+				transition: .5s ease all;
+			}
 		}
 	}
 
-	&__input, &__burger { display: none; }
+	&__input,
+	&__burger {
+		display: none;
+	}
 
 	&__list {
 		@extend %flex-jsb;
@@ -62,7 +63,8 @@
 				background-position: 100%;
 				transition: background-position .5s $inQuad, color .5s $inQuad;
 
-				&:hover,&:focus {
+				&:hover,
+				&:focus {
 					background-position: 0%;
 					background-size: 200%;
 					color: transparent;
@@ -70,10 +72,10 @@
 
 				span {
 					transform: rotate(90deg);
-					display: inline-block;
+					@extend %inline-block;
 					margin: 0 .5rem;
 					font-size: 1.4rem;
-					font-weight: 700;
+					@extend %font-700;
 				}
 			}
 		}
@@ -87,11 +89,18 @@
 		padding: 0;
 		@extend %text-center;
 	}
+
 	.btn {
 		background: $btn-gradient-2;
-		&::after { background: $icon-red-gradient; }
+
+		&::after {
+			background: $icon-red-gradient;
+		}
 	}
-	.btn--outline { margin: 0 0 0 2.2rem;}
+
+	.btn--outline {
+		margin: 0 0 0 2.2rem;
+	}
 
 
 	@include device(tab) {
@@ -102,7 +111,9 @@
 			margin-right: 5rem;
 			margin-bottom: 2rem;
 
-			svg { width: 25vw; }
+			svg {
+				width: 25vw;
+			}
 		}
 	}
 
@@ -114,30 +125,28 @@
 		z-index: 10;
 		position: relative;
 
-		&__logo { 
+		&__logo {
 			margin: 0;
-			svg { width: 35vw;}
+
+			svg {
+				width: 35vw;
+			}
 		}
-		
+
 		&__list {
 			will-change: clip-path;
 			background: $section-5-gradient;
 			flex-direction: column;
 			position: absolute;
-			top: 0; 
+			top: 0;
 			left: 0;
 			width: 100vw;
 			padding: 30vw var(--padding-lr) 20vw var(--padding-lr);
-			// transform: translateY(-100%);
-			// transform-origin: center top;
 			font-size: 2rem;
-			// z-index: 90;
-
 			clip-path: circle(0% at 89% 8%);
 			visibility: hidden;
 			transition: .6s $inOutCubic;
 			box-shadow: 10px 0px 20px rgba($grey-2, .5);
-			// display: block;
 
 			.btn,
 			.btn--outline {
@@ -148,22 +157,35 @@
 				padding: 0;
 				font-size: 2rem;
 			}
-			.btn--outline { margin: 5rem 0 2rem 0; }
+
+			.btn--outline {
+				margin: 5rem 0 2rem 0;
+			}
 		}
 
 		&__input:checked {
-			& ~ .nav__list {
-				// transform: translateY(0%);
+			&~.nav__list {
 				clip-path: circle(100% at 50% 50%);
 				visibility: visible;
 				display: flex;
 			}
 
-			& + .nav__burger {
+			&+.nav__burger {
 				.nav__burger-line {
 					background: transparent;
-					&::before { transform-origin: center; transform: rotate(45deg); top: 50%; }
-					&::after { transform-origin: center; transform: rotate(-45deg); top: 50%; bottom: 50%; }
+
+					&::before {
+						transform-origin: center;
+						transform: rotate(45deg);
+						top: 50%;
+					}
+
+					&::after {
+						transform-origin: center;
+						transform: rotate(-45deg);
+						top: 50%;
+						bottom: 50%;
+					}
 				}
 			}
 		}
@@ -178,7 +200,6 @@
 			align-items: center;
 			justify-content: center;
 			cursor: pointer;
-			// padding: 1rem 0;
 
 			&-line {
 				will-change: width;
@@ -194,7 +215,6 @@
 					content: '';
 					position: absolute;
 					width: var(--burger-width);
-					// width: calc(var(--burger-width) - 20%);
 					transform: scaleX(.8);
 					height: 3.4px;
 					border-radius: 5rem;
@@ -207,6 +227,7 @@
 					left: 0;
 					transform-origin: left;
 				}
+
 				&::after {
 					bottom: 0;
 					right: 0;
@@ -214,10 +235,11 @@
 				}
 			}
 
-
-			&:hover,&:focus {
+			&:hover,
+			&:focus {
 				.nav__burger-line {
 					width: 100%;
+
 					&::before,
 					&::after {
 						transform: scaleX(1.1);
@@ -225,14 +247,10 @@
 					}
 				}
 			}
-			
-
 		}
-		
-		&__logo { z-index: 5;}
-	}
 
-	// &--anim {
-	// 	animation: fadein_fromTop 1s $outBack backwards;
-	// }
+		&__logo {
+			z-index: 5;
+		}
+	}
 }

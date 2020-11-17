@@ -1,7 +1,7 @@
 html,
 body {
 	scroll-behavior: smooth;
-	width: 100%;
+	@extend %w-100;
 	min-height: 100vh;
 	overflow-x: hidden;
 	transition: all 1s $outCirc;
@@ -22,17 +22,7 @@ body {
 
 .content {
 	display: none;
-	// position: relative;
-	// transform: translate3d(-100%, 0, 0);
-	// transition: 2s ease-in-out transform;
 }
-
-// .smooth-scroll-wrapper {
-// 	position: fixed; top: 0; left: 0;
-// 	z-index: 2;
-// 	@extend %overflow-hidden;
-// }
-
 
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track {
@@ -50,10 +40,6 @@ body {
 	color: $white;
 }
 
-ul {
-	list-style-type: none;
-}
-
 a {
 	text-decoration: none;
 	color: inherit;
@@ -63,16 +49,15 @@ a {
 
 
 
-
 .bp {
 	font-size: 2rem;
 	padding: .3rem 1rem;
-	display: block;
+	@extend %block;
 	@extend %text-center;
 	@extend %pos-fix;
 	bottom: 5%;
 	left: 50%;
-	display: none;
+	// display: none;
 
 	&::before {
 		content: 'desktop '
