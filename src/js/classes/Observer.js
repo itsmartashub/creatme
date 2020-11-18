@@ -62,52 +62,36 @@ export default class Observer {
 		})
 	}
 
-
 	browserDontSupportObserver() {
-		// $from_bottom.forEach(bottom => {
-		// 	bottom.style.cssText = `
-		// 		opacity: 1;
-		// 		transform: translate3d(0,0,0);
-		// 	`;
-		// });
-		// $from_bottom_cards.forEach(card => {
-		// 	card.style.cssText = `
-		// 		opacity: 1;
-		// 		transform: inherit;
-		// 	`;
-		// });
-		// $sliders.forEach(slider => {
-		// 	slider.style.cssText = `
-		// 		opacity: 1;
-		// 		transform: translate3d(0,0,0);
-		// 	`;
-		// });
-		// $anim_text.forEach(text => {
-		// 	text.style.cssText = `
-		// 		opacity: 1;
-		// 		letter-spacing: inherit;
-		// 	`;
-		// });
-
-		const allAnimEls = [...document.querySelectorAll('[class^="anim--"]')]
-		console.log(allAnimEls);
-		allAnimEls.forEach(el => {
-			// el.classList.contains('anim--').remove()
-			// 	let class_list = [...el.classList]
-			// 	// class_list[0].contains('anim--').remove()
-
-			// 	// if (class_list.contains('anim--')) {
-			// 	// 	console.log('TE');
-			// }
-
-
-			// 	// console.log(class_list.filter(cl => cl.contains('anim--')));
-			// 	// el.classList.forEach(cl => {
-			// 	// 	console.log(cl.className.contains('anim--'));
-			// 	// 	console.log(cl);
-			// 	// })
-			// });
-			// console.log(allAnimEls);
+		this.removeAnimClassFromArr($from_bottom)
+		this.removeAnimClassFromArr($from_top)
+		this.removeAnimClassFromArr($from_left)
+		this.removeAnimClassFromArr($from_right)
+		this.removeAnimClassFromArr($imgs)
+		this.removeAnimClassFromArr($circle_imgs)
+		this.removeAnimClassFromArr($icons)
+		this.removeAnimClassFromArr($from_bottom_cards)
+		this.removeAnimClassFromArr($scale)
+		this.removeAnimClassFromArr($fade_in)
+		this.removeAnimClassFromIndividualEl($from_right_rotating)
+		this.addTransitionOnSmallCircleImgs()
+	}
+	removeAnimClassFromArr(_arr) {
+		const prefix = "anim--";
+		_arr.forEach(el => {
+			const classes = el.className.split(" ").filter(c => !c.startsWith(prefix))
+			el.className = classes.join(" ").trim()
+		})
+	}
+	removeAnimClassFromIndividualEl(_oneEl) {
+		const prefix = "anim--";
+		const classes = _oneEl.className.split(" ").filter(c => !c.startsWith(prefix))
+		_oneEl.className = classes.join(" ").trim()
+	}
+	addTransitionOnSmallCircleImgs() {
+		$circle_imgs.forEach(img => {
+			img.style.transition = '1s ease-in-out'
+			console.log(img.style.transition);
 		})
 	}
 }

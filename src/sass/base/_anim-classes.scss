@@ -98,7 +98,7 @@
 	&--fromRight,
 	&--imgs,
 	&--fromRight-rotating {
-		// will-change: opacity, transform;
+		will-change: opacity, transform;
 		opacity: 0;
 		// transition: opacity 1.2s $outSmooth, transform 2s $outSmooth;
 		transition: opacity 1.2s $outSmooth, transform 2.2s $outBack;

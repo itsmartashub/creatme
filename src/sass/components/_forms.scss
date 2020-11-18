@@ -10,7 +10,6 @@
 	margin: -12% 15% 0 auto;
 
 	&__img {
-		will-change: transform;
 		border-radius: 1.7rem;
 		background: url('../assets/images/chinese-girl-with-flowers.jpg') no-repeat center;
 		background-size: cover;
@@ -20,14 +19,14 @@
 		box-shadow: -1px 10px 20px 5px rgba($grey-1, .18);
 		@extend %pos-rel;
 		transform-origin: center center;
-		transition: transform .8s ease-in-out;
+		transition: all .8s ease-in-out !important;
 
 		&::before {
 			will-change: top, right, opacity, transform;
 			@extend %after;
 			top: -30%;
 			right: -20%;
-			border: 1.8px solid rgba($main, .6);
+			border: 2px solid rgba($main, .5);
 			border-radius: 1.7rem;
 			transition: all .8s $inOutQuad;
 		}
@@ -39,7 +38,7 @@
 			&::before {
 				top: 0;
 				right: 0;
-				opacity: .1;
+				opacity: .4;
 				transform: rotate(180deg);
 			}
 		}

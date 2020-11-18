@@ -1,4 +1,5 @@
 .preloader {
+	will-change: transform;
 	@extend %pos-fix;
 	top: 0;
 	left: 0;
@@ -77,6 +78,7 @@
 }
 
 .afterloader {
+	will-change: transform;
 	@extend %pos-fix;
 	top: 0;
 	left: 0;

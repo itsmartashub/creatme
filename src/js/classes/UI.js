@@ -21,14 +21,15 @@ export default class UI {
 		document.querySelector('.preloader__circle').style.animation = 'none';
 		document.styleSheets[0].addRule('.preloader__circle::before', 'animation: none');
 		document.styleSheets[0].addRule('.preloader__circle::after', 'animation: none');
+		// console.log(document.querySelector('.preloader__circle').style.animation);
 
-		this.pseudoElementsCss()
+		// this.pseudoElementsCss()
 	}
 
-	pseudoElementsCss() {
-		const beforeValue = window.getComputedStyle(document.querySelector('.preloader__circle'), '::before').getPropertyValue('animation');
-		const afterValue = window.getComputedStyle(document.querySelector('.preloader__circle'), '::after').getPropertyValue('animation');
+	// pseudoElementsCss() {
+	// 	const beforeValue = window.getComputedStyle(document.querySelector('.preloader__circle'), '::before').getPropertyValue('animation');
+	// 	const afterValue = window.getComputedStyle(document.querySelector('.preloader__circle'), '::after').getPropertyValue('animation');
 
-		return console.log(`beforeValue: ${beforeValue} and afterValue: ${afterValue}`)
-	}
+	// 	return console.log(`beforeValue: ${beforeValue} and afterValue: ${afterValue}`)
+	// }
 }
