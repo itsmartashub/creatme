@@ -6,41 +6,49 @@
 	}
 
 	.nav {
-		animation: fadein_fromTop 1s $outBack backwards calc(var(--duration) + .8s);
+		animation: fadein_fromTop 1s $outBack backwards
+			calc(var(--duration) + 0.8s);
 	}
 
 	.header {
 		&__top {
 			h1 {
-				animation: fadein_fromBottom 1s $outBack backwards calc(var(--duration) + .8s);
+				animation: fadein_fromBottom 1s $outBack backwards
+					calc(var(--duration) + 0.8s);
 
 				span {
 					&::after {
-						animation: scaleY 1.3s $outBack backwards calc(var(--duration) + .8s);
+						animation: scaleY 1.3s $outBack backwards
+							calc(var(--duration) + 0.8s);
 					}
 
 					&:nth-of-type(2)::after {
-						animation: scaleY 1.3s $outBack backwards calc(var(--duration) + 1.2s);
+						animation: scaleY 1.3s $outBack backwards
+							calc(var(--duration) + 1.2s);
 					}
 				}
 			}
 
 			p {
-				animation: fadein_fromBottom 1s $outBack backwards calc(var(--duration) + 1s);
+				animation: fadein_fromBottom 1s $outBack backwards
+					calc(var(--duration) + 1s);
 			}
 		}
 
 		&__model-wrapper {
-			animation: header_model 2.3s $outBack backwards calc(var(--duration) + .8s);
+			animation: header_model 2.3s $outBack backwards
+				calc(var(--duration) + 0.8s);
 		}
 
 		&__scrolldown-wrapper-anchor {
-			animation: fadein_fromTop 1.3s $outBack backwards calc(var(--duration) + 2s);
+			animation: fadein_fromTop 1.3s $outBack backwards
+				calc(var(--duration) + 2s);
 		}
 	}
 
 	.createcv {
-		animation: fadein_fromBottom 1s $outBack backwards calc(var(--duration) + 1s);
+		animation: fadein_fromBottom 1s $outBack backwards
+			calc(var(--duration) + 1s);
 
 		&__img-wrapper {
 			animation: scale 1.5s $outBack backwards;
@@ -83,7 +91,8 @@
 		}
 
 		.btn {
-			animation: fadein_fromTop 1.5s $outBack backwards calc(var(--duration) + 1.5s);
+			animation: fadein_fromTop 1.5s $outBack backwards
+				calc(var(--duration) + 1.5s);
 		}
 	}
 }
@@ -132,7 +141,7 @@
 
 	&--fromRight-rotating {
 		transform: translate3d($value, 0, $value) rotate(-180deg);
-		transition: opacity .8s ease, transform 3s $outBack;
+		transition: opacity 0.8s ease, transform 3s $outBack;
 	}
 
 	&--icon {
@@ -142,8 +151,8 @@
 		svg {
 			opacity: 0;
 			transform: translate3d(0, -#{$value}, 0) scale(0);
-			transition-delay: .4s;
-			transition: transform 1.2s $outSmooth, opacity .8s $outSmooth;
+			transition-delay: 0.4s;
+			transition: transform 1.2s $outSmooth, opacity 0.8s $outSmooth;
 		}
 
 		&.appear {
@@ -159,6 +168,11 @@
 	&--imgs {
 		transform: translate3d(-100%, 0, 0);
 		transition: opacity 1.3s $outSmooth, transform 2s $outSmooth !important;
+
+		// &.appear {
+		// 	opacity: 1 !important;
+		// 	transform: translate3d(0, 0, 0) !important;
+		// }
 	}
 
 	&--circle-imgs {
@@ -193,8 +207,6 @@
 		}
 	}
 }
-
-
 
 @keyframes fadein_fromTop {
 	from {
@@ -243,7 +255,6 @@
 }
 
 @keyframes createcv_after {
-
 	0%,
 	100% {
 		transform: scale(0) translateY(300%);
@@ -257,7 +268,7 @@
 
 @keyframes header_model {
 	from {
-		transform: rotateY(180deg) scale(.3) translate3d(-50%, -50%, 0);
+		transform: rotateY(180deg) scale(0.3) translate3d(-50%, -50%, 0);
 		opacity: 0;
 	}
 

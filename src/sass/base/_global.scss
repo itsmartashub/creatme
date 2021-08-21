@@ -20,19 +20,32 @@ body {
 	@extend %overflow-hidden;
 }
 
+.smooth-scroll-wrapper {
+	&--active {
+		position: fixed;
+		z-index: 2;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+}
+
 .content {
 	display: none;
+	width: 100%;
 }
 
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track {
 	background: $white;
-	width: .8rem;
+	width: 0.8rem;
+	transition: 0.3s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: $main;
 	@extend %radius-btn;
+	transition: 0.3s ease-in-out;
 }
 
 ::selection {

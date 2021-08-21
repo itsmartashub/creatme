@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./sass/index.scss">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 	<title>CreatMe</title>
 </head>
 <body>
@@ -24,7 +25,8 @@
 	</div>
 
 
-	<div class="content ">
+<div class="smooth-scroll-wrapper">
+	<main class="content">
 
 		<nav class="nav">
 			<a href="./" class="nav__logo">
@@ -52,6 +54,10 @@
 		</nav>
 
 		<div class="image-escalators"></div>
+		
+		<!-- <figure class="image-escalators">
+			<img  src="./assets/images/pink-stairs-big.jpg"></img>
+		</figure> -->
 
 		<header class="header">
 			<div class="header__top">
@@ -97,8 +103,11 @@
 			</div>
 		</header>
 
-		<main class="container">
+		<section class="container">
 			<div class="image-plant anim--imgs"></div>
+			<!-- <figure class="image-plant anim--imgs">
+				<img src="./assets/images/plant-half.jpg" alt="">
+			</figure> -->
 
 			<section class="section--1 anim--fromBottom" id="section--1">
 				<div class="icon anim--icon">
@@ -169,7 +178,7 @@
 					<p class="card__text">While most people enjoy casino gambling.</p>
 				</article>
 			</section>
-		</main>
+		</section>
 
 		<section class="weaponise">
 			<article class="weaponise__left anim--fromRight">
@@ -406,7 +415,8 @@
 
 		</footer>
 
-	</div>
+	</main>
+</div>
 
 	<script src="./js/index.js"></script>
 </body>

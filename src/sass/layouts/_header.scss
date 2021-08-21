@@ -40,8 +40,7 @@
 		grid-template-rows: max-content 1fr;
 		grid-template-areas:
 			"createcv model"
-			"scrolldown model"
-		;
+			"scrolldown model";
 	}
 
 	&__createcv {
@@ -73,7 +72,6 @@
 					letter-spacing: 3px;
 					color: darken($bluegrey, 10%);
 					text-transform: uppercase;
-
 				}
 			}
 		}
@@ -87,10 +85,10 @@
 		font-size: 1.45rem;
 		@extend %pos-rel;
 		border-radius: 2px;
-		transition: all .5s ease-in-out;
+		transition: all 0.5s ease-in-out;
 
 		&::before {
-			content: 'scroll to explore';
+			content: "scroll to explore";
 			color: $grey-1;
 			@extend %pos-abs;
 			top: 0%;
@@ -98,25 +96,23 @@
 			width: max-content;
 			transform: rotate(90deg) translate(-50%, 80%);
 			transform-origin: left center;
-			transition: all .5s ease-in-out;
+			transition: all 0.5s ease-in-out;
 		}
 
 		&::after {
 			@extend %pos-abs;
 			bottom: 0;
 			left: -4px;
-			content: '';
+			content: "";
 			width: 11px;
 			height: 11px;
 			border-bottom: var(--arrow-width) solid $main;
 			border-right: var(--arrow-width) solid $main;
 			transform-origin: center center;
 			transform: rotate(45deg);
-			transition: all .5s ease-in-out;
+			transition: all 0.5s ease-in-out;
 			border-radius: 2px;
 		}
-
-
 	}
 
 	&__model-wrapper {
@@ -142,7 +138,8 @@
 
 	&__model-img {
 		will-change: transform, filter;
-		background: url("../assets/images/yellow-jacket-model.jpg") no-repeat center;
+		background: url("../assets/images/yellow-jacket-model.jpg") no-repeat
+			center;
 		@extend %w-100;
 		@extend %h-100;
 		background-size: cover;
@@ -164,11 +161,19 @@
 			justify-content: center;
 		}
 
+		&__scrolldown-wrapper-anchor {
+			&:hover,
+			&:focus {
+				.header__scrolldown::before {
+					transform: rotate(90deg) translate(-50%, 80%);
+				}
+			}
+		}
+
 		&__scrolldown {
 			align-self: flex-end;
 		}
 	}
-
 
 	@include device(phone-land) {
 		--padding-lr: 6vw;

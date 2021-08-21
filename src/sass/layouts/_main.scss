@@ -12,10 +12,17 @@ $p-l: 24vw;
 		border-bottom-right-radius: 20rem;
 		width: 20vw;
 		@extend %h-100;
+		@extend %overflow-hidden;
 		z-index: 10;
 
-		background: url('../assets/images/plant-half.jpg');
+		background: url("../assets/images/plant-half.jpg");
 		background-size: cover;
+
+		// img {
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	object-fit: cover;
+		// }
 	}
 
 	.section--1 {
@@ -53,10 +60,16 @@ $p-l: 24vw;
 		padding: 10rem var(--padding-lr) 5rem var(--padding-l);
 	}
 
-
 	@include device(tab) {
 		.image-plant {
 			background-position-x: 25%;
+
+			// img {
+			// 	width: 100%;
+			// 	height: 100%;
+			// 	object-fit: cover;
+			// 	object-position: 25% center;
+			// }
 		}
 	}
 
