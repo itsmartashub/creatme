@@ -1,6 +1,5 @@
 import UI from "./classes/UI"
 import Observer from "./classes/Observer"
-import SmoothScrolling from "./classes/SmoothScrolling"
 
 window.addEventListener("load", function () {
 	const _ui = new UI()
@@ -25,7 +24,7 @@ window.addEventListener("load", function () {
 		const body = document.body
 		const $scrollWrap = document.querySelector(".smooth-scroll-wrapper")
 		const height = $scrollWrap.getBoundingClientRect().height - 1
-		const speed = 0.025
+		const speed = 0.03
 		let offset = 0
 
 		$scrollWrap.classList.add("smooth-scroll-wrapper--active")

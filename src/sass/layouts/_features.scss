@@ -9,7 +9,7 @@
 	&__left {
 		border-top-right-radius: 12em;
 		border-bottom-right-radius: 12em;
-		background-image: url('../assets/images/clock-and-plant-on-desk-nature-min.jpg');
+		background-image: url("../assets/images/clock-and-plant-on-desk-nature-min.jpg");
 		background-repeat: no-repeat;
 		background-position: 90% center;
 		background-size: cover;
@@ -32,7 +32,7 @@
 		@extend %w-100;
 		padding: 0 5vw;
 
-		&>input[type=radio] {
+		& > input[type="radio"] {
 			display: none;
 		}
 	}
@@ -43,7 +43,7 @@
 
 	&__label {
 		@extend %cursor;
-		border-bottom: 1.5px dashed rgba($grey-1, .5);
+		border-bottom: 1.5px dashed rgba($grey-1, 0.5);
 		@extend %grid;
 		grid-template-columns: max-content 1fr;
 		grid-template-rows: max-content 1fr;
@@ -53,14 +53,14 @@
 		padding: 2.5rem 0;
 
 		&:nth-of-type(1) {
-			border-top: 1.5px dashed rgba($grey-1, .5);
+			border-top: 1.5px dashed rgba($grey-1, 0.5);
 		}
 
 		.icon--retro {
 			will-change: color;
 			grid-column: 1/2;
 			grid-row: 1/2;
-			font-size: calc(var(--icon-size)/1.8);
+			font-size: calc(var(--icon-size) / 1.8);
 			@extend %font-300;
 			background: $grey;
 			color: $bluegrey;
@@ -68,10 +68,10 @@
 
 			&::after {
 				will-change: opacity, transform;
-				content: '+';
+				content: "+";
 				transform: none;
 				transform-origin: center;
-				opacity: .5;
+				opacity: 0.5;
 				transition: all 1s $outCirc;
 			}
 		}
@@ -98,7 +98,8 @@
 			pointer-events: none;
 			transform: translate3d(0, -20%, 0) scaleY(0);
 			transform-origin: center center;
-			transition: height .8s $outCirc, transform .8s $outCirc, opacity .2s $outCirc;
+			transition: height 0.8s $outCirc, transform 0.8s $outCirc,
+				opacity 0.2s $outCirc;
 		}
 
 		&:hover {
@@ -130,7 +131,7 @@
 	}
 
 	#features__label--1:checked {
-		&~.features__labels .features__label:nth-of-type(1) {
+		& ~ .features__labels .features__label:nth-of-type(1) {
 			h3 {
 				@extend %features-labels-h3;
 			}
@@ -146,7 +147,7 @@
 	}
 
 	#features__label--2:checked {
-		&~.features__labels .features__label:nth-of-type(2) {
+		& ~ .features__labels .features__label:nth-of-type(2) {
 			h3 {
 				@extend %features-labels-h3;
 			}
@@ -162,7 +163,7 @@
 	}
 
 	#features__label--3:checked {
-		&~.features__labels .features__label:nth-of-type(3) {
+		& ~ .features__labels .features__label:nth-of-type(3) {
 			h3 {
 				@extend %features-labels-h3;
 			}
@@ -178,7 +179,7 @@
 	}
 
 	#features__label--4:checked {
-		&~.features__labels .features__label:nth-of-type(4) {
+		& ~ .features__labels .features__label:nth-of-type(4) {
 			h3 {
 				@extend %features-labels-h3;
 			}
@@ -192,7 +193,6 @@
 			}
 		}
 	}
-
 
 	@include device(tab-land) {
 		%features-labels-p {
@@ -217,8 +217,13 @@
 
 	@include device(phone) {
 		&__left {
-			background: url('../assets/images/mob-clock-and-plant-on-desk-nature-min.jpg') no-repeat right;
+			background: url("../assets/images/mob-clock-and-plant-on-desk-nature-min.jpg")
+				no-repeat right;
 			background-size: cover;
+		}
+
+		&__right {
+			margin-top: 10vh;
 		}
 
 		%features-labels-p {
@@ -226,12 +231,9 @@
 			max-height: max-content;
 		}
 	}
-
-
 }
 
 @keyframes hoverBtn {
-
 	0%,
 	100% {
 		transform: translateY(45%);

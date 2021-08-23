@@ -22,11 +22,13 @@ body {
 
 .smooth-scroll-wrapper {
 	&--active {
+		will-change: transform;
 		position: fixed;
 		z-index: 2;
 		top: 0;
 		left: 0;
 		overflow: hidden;
+		// min-height: 100vh;
 	}
 }
 
