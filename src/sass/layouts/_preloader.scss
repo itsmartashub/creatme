@@ -1,160 +1,167 @@
 .preloader {
-	will-change: transform;
-	@extend %pos-fix;
-	top: 0;
-	left: 0;
-	@extend %w-100;
-	@extend %h-100;
-	background: #f6edf0;
-	z-index: 20000;
+  will-change: transform;
+  @extend %pos-fix;
+  top: 0;
+  left: 0;
+  @extend %w-100;
+  @extend %h-100;
+  background: #f6edf0;
+  z-index: 20000;
 
-	&__circle {
-		--duration: 3s;
-		--border-width: .5rem;
-		--circle-size: 20vw;
-		--border-top-color: #ee807f;
-		@extend %pos-rel;
-		margin: calc((100vh - var(--circle-size))/2) auto;
-		width: var(--circle-size);
-		height: var(--circle-size);
-		@extend %radius-50;
-		border: var(--border-width) solid transparent;
-		border-top-color: var(--border-top-color);
-		animation: spin var(--duration) linear infinite;
+  &--animation-none {
+    animation: none;
 
-		&::before,
-		&::after {
-			content: "";
-			@extend %pos-abs;
-			top: var(--circle-gap);
-			left: var(--circle-gap);
-			right: var(--circle-gap);
-			bottom: var(--circle-gap);
-			border-radius: 50%;
-			border: var(--border-width) solid transparent;
-			border-top-color: var(--border-top-color);
-			animation: spin linear infinite;
-		}
+    .preloader__circle {
+      &::before,
+      &::after {
+        animation: none;
+      }
+    }
+  }
 
-		&::before {
-			--circle-gap: 1.5rem;
-			--border-top-color: #b2acac;
-			animation-duration: calc(var(--duration) + 1s);
-		}
+  &__circle {
+    --duration: 3s;
+    --border-width: 0.5rem;
+    --circle-size: 20vw;
+    --border-top-color: #ee807f;
+    @extend %pos-rel;
+    margin: calc((100vh - var(--circle-size)) / 2) auto;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    @extend %radius-50;
+    border: var(--border-width) solid transparent;
+    border-top-color: var(--border-top-color);
+    animation: spin var(--duration) linear infinite;
 
-		&::after {
-			--circle-gap: 3rem;
-			--border-top-color: #e1a99f;
-			animation-duration: calc(var(--duration) - .5s);
-		}
-	}
+    &::before,
+    &::after {
+      content: "";
+      @extend %pos-abs;
+      top: var(--circle-gap);
+      left: var(--circle-gap);
+      right: var(--circle-gap);
+      bottom: var(--circle-gap);
+      border-radius: 50%;
+      border: var(--border-width) solid transparent;
+      border-top-color: var(--border-top-color);
+      animation: spin linear infinite;
+    }
 
-	&--hidden {
-		pointer-events: none;
-		transform: translate3d(0, 100%, 0) !important;
-		transition: 2s transform $inOutCirc;
+    &::before {
+      --circle-gap: 1.5rem;
+      --border-top-color: #b2acac;
+      animation-duration: calc(var(--duration) + 1s);
+    }
 
-		.preloader__circle {
-			@extend %opacity-0;
-			pointer-events: none;
-			transition: 1s opacity ease-in-out;
-		}
-	}
+    &::after {
+      --circle-gap: 3rem;
+      --border-top-color: #e1a99f;
+      animation-duration: calc(var(--duration) - 0.5s);
+    }
+  }
 
-	@include device(tab) {
-		&__circle {
-			--circle-size: 40vw;
-			--border-width: .4rem;
+  &--hidden {
+    pointer-events: none;
+    transform: translate3d(0, 100%, 0) !important;
+    transition: 2s transform $inOutCirc;
 
-			&::before {
-				--circle-gap: 1rem;
-			}
+    .preloader__circle {
+      @extend %opacity-0;
+      pointer-events: none;
+      transition: 1s opacity ease-in-out;
+    }
+  }
 
-			&::after {
-				--circle-gap: 2.5rem;
-			}
-		}
-	}
+  @include device(tab) {
+    &__circle {
+      --circle-size: 40vw;
+      --border-width: 0.4rem;
+
+      &::before {
+        --circle-gap: 1rem;
+      }
+
+      &::after {
+        --circle-gap: 2.5rem;
+      }
+    }
+  }
 }
 
 .afterloader {
-	will-change: transform;
-	@extend %pos-fix;
-	top: 0;
-	left: 0;
-	@extend %w-100;
-	@extend %h-100;
-	background: $btn-gradient-2;
-	z-index: 10000;
+  will-change: transform;
+  @extend %pos-fix;
+  top: 0;
+  left: 0;
+  @extend %w-100;
+  @extend %h-100;
+  background: $btn-gradient-2;
+  z-index: 10000;
 
-	p {
-		--font-size: 20vw;
-		color: rgba($white, .2);
-		font-size: var(--font-size);
-		@extend %font-700;
-		line-height: initial;
-		@extend %text-center;
-		margin: calc((80vh - var(--font-size))/2) auto;
-		@extend %overflow-hidden;
-		transform-origin: center bottom;
-		transform: scaleY(1.1);
+  p {
+    --font-size: 20vw;
+    color: rgba($white, 0.2);
+    font-size: var(--font-size);
+    @extend %font-700;
+    line-height: initial;
+    @extend %text-center;
+    margin: calc((80vh - var(--font-size)) / 2) auto;
+    @extend %overflow-hidden;
+    transform-origin: center bottom;
+    transform: scaleY(1.1);
 
-		span {
-			@extend %inline-block;
-		}
-	}
+    span {
+      @extend %inline-block;
+    }
+  }
 
-	&--hidden {
-		transform: translate3d(0, 100%, 0) !important;
-		transform-origin: center top;
-		transition: 2s transform $inOutCirc 2s, 0s opacity 5s;
-		pointer-events: none;
-		@extend %opacity-0;
+  &--hidden {
+    transform: translate3d(0, 100%, 0) !important;
+    transform-origin: center top;
+    transition: 2s transform $inOutCirc 2s, 0s opacity 5s;
+    pointer-events: none;
+    @extend %opacity-0;
 
-		span {
+    span {
+      transform: translate3d(0, 120%, 0);
+      transition: 2.5s transform ease-out;
 
-			transform: translate3d(0, 120%, 0);
-			transition: 2.5s transform ease-out;
+      &:nth-of-type(1) {
+        transition-delay: 1.5s;
+      }
 
-			&:nth-of-type(1) {
-				transition-delay: 1.5s;
-			}
+      &:nth-of-type(2) {
+        transition-delay: 1.62s;
+      }
 
-			&:nth-of-type(2) {
-				transition-delay: 1.62s;
-			}
+      &:nth-of-type(3) {
+        transition-delay: 1.74s;
+      }
 
-			&:nth-of-type(3) {
-				transition-delay: 1.74s;
-			}
+      &:nth-of-type(4) {
+        transition-delay: 1.86s;
+      }
 
-			&:nth-of-type(4) {
-				transition-delay: 1.86s;
-			}
-
-			&:nth-of-type(5) {
-				transition-delay: 1.98s;
-			}
-		}
-	}
-
-
+      &:nth-of-type(5) {
+        transition-delay: 1.98s;
+      }
+    }
+  }
 }
 
 @include device(phone) {
-
-	.preloader--hidden,
-	.afterloader--hidden {
-		transform: translate3d(-100%, 0, 0) !important;
-	}
+  .preloader--hidden,
+  .afterloader--hidden {
+    transform: translate3d(-100%, 0, 0) !important;
+  }
 }
 
 @keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
 
-	100% {
-		transform: rotate(360deg);
-	}
+  100% {
+    transform: rotate(360deg);
+  }
 }
